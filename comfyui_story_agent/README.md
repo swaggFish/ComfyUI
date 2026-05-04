@@ -142,6 +142,35 @@ Before any GPU execution, the Critic checks:
 
 ---
 
+## 🕵️ The Director Agent (Automated Visual QA)
+
+The pipeline includes a self-healing **Director Agent** that acts as an automated test suite for generated pixels.
+
+When a shot finishes rendering, the Director:
+1. **Extracts** 3 evidence frames (first, middle, last)
+2. **Evaluates** them using Gemini Flash 2.0 (zero local VRAM cost) for:
+   - Anatomy distortion
+   - Background stability
+   - Character identity drift
+   - Physics coherence
+3. **Corrects** mathematical parameters (CFG, seed, negative prompt) within safe envelopes if drift is detected
+4. **Retries** the generation up to 3 times before accepting or scrapping
+
+### Using the Director
+The Director runs automatically during generation if `GEMINI_API_KEY` is set.
+
+```bash
+export GEMINI_API_KEY="your-google-ai-key-here"
+
+# Generate with automated QA loop:
+python -m comfyui_story_agent generate -s examples/my_movie.yaml
+
+# Run post-hoc QA review on existing clips:
+python -m comfyui_story_agent review -c output/my_movie/
+```
+
+---
+
 ## 🎥 The Movie-Making Workflow
 
 Here's the proven process for creating a new movie:
@@ -187,6 +216,9 @@ python -m comfyui_story_agent assemble --clips output/dir/ -o final.mp4
 
 # Create a blank template
 python -m comfyui_story_agent template --shots 6 -o my_movie.yaml
+
+# Run Director Agent QA review on existing clips
+python -m comfyui_story_agent review -c output/my_movie/
 
 # List available transitions
 python -m comfyui_story_agent list

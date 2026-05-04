@@ -59,6 +59,18 @@ def extract_evidence_frames(
 
     prefix = f"evidence_shot{shot_id:03d}"
 
+    # Handle the case where the "clip" path is actually a directory
+    # (the pipeline creates directories like shot_001.webp/clips/...)
+    if clip_path.is_dir():
+        # Search for actual clip files inside
+        real_clips = sorted(clip_path.rglob("*.webp")) + sorted(clip_path.rglob("*.mp4"))
+        real_clips = [f for f in real_clips if f.is_file()]
+        if real_clips:
+            clip_path = real_clips[0]
+            logger.info(f"Resolved directory to actual clip: {clip_path}")
+        else:
+            raise FileNotFoundError(f"No clip files found inside directory: {clip_path}")
+
     if clip_path.suffix.lower() == ".webp":
         return _extract_from_webp(clip_path, output_dir, prefix)
     else:
