@@ -1,0 +1,111 @@
+{
+  "_meta": {
+    "version": "2.0.0",
+    "description": "Few-Shot Success Library — Vector DB Guardrail (Guardrail 1)",
+    "rationale": "Stores proven successes as few-shot examples. When generating new content, the agent queries this library for the top matching past workflows and uses them as structural templates.",
+    "last_updated": "2026-05-02"
+  },
+
+  "golden_runs": [
+    {
+      "id": "super_noah_shot04_transformation",
+      "project": "super_noah",
+      "description": "Noah transforms from regular clothes to blue super-suit on mountain peak at sunset. Blue energy swirl effect.",
+      "tags": ["transformation", "superhero", "sunset", "cinematic", "energy_effect"],
+      "pipeline": "flf2v_cinematic",
+      "resolution": [1024, 576],
+      "frames": 97,
+      "cfg": 3.5,
+      "steps": 24,
+      "lora_strength": 0.5,
+      "quality_score": 0.95,
+      "prompt_template": "{character_name} transforming into {hero_name} on a {location}. {energy_type} energy swirl, superhero suit reveal. Cinematic lighting.",
+      "negative_used": "blurry, low quality, text, watermark, deformed, disfigured",
+      "visual_notes": "Perfect character consistency between keyframes. Energy effect is cinematic without overpowering the subject."
+    },
+    {
+      "id": "super_noah_shot10_standoff",
+      "project": "super_noah",
+      "description": "Super Noah hovering at eye-level with Dr. Robotnik's cockpit. Arms crossed, serious expression.",
+      "tags": ["standoff", "villain", "confrontation", "cinematic", "hovering"],
+      "pipeline": "flf2v_cinematic",
+      "resolution": [1024, 576],
+      "frames": 97,
+      "cfg": 3.5,
+      "steps": 24,
+      "lora_strength": 0.5,
+      "quality_score": 0.93,
+      "prompt_template": "{hero_name} hovering in a standoff with {villain_name}. Intense eye-contact, serious expression.",
+      "negative_used": "blurry, low quality, text, watermark, deformed, disfigured",
+      "visual_notes": "Strong dual-character consistency. Villain design held through interpolation."
+    },
+    {
+      "id": "super_noah_shot12_victory",
+      "project": "super_noah",
+      "description": "Super Noah lands in park surrounded by cheering crowd. Holding a puppy, winking.",
+      "tags": ["victory", "crowd", "celebration", "park", "cinematic"],
+      "pipeline": "flf2v_cinematic",
+      "resolution": [1024, 576],
+      "frames": 97,
+      "cfg": 3.5,
+      "steps": 24,
+      "lora_strength": 0.5,
+      "quality_score": 0.92,
+      "prompt_template": "{hero_name} has landed in a {location}. A crowd of happy {crowd_type} are cheering around him. He is holding a rescued {animal}. Heroic victory pose.",
+      "negative_used": "blurry, low quality, text, watermark, deformed, disfigured",
+      "visual_notes": "Large crowd scene maintained consistency. Sunset lighting added cinematic warmth."
+    },
+    {
+      "id": "super_henrio_hybrid_shot01",
+      "project": "super_henrio_hybrid",
+      "description": "Henrio in ruins with ancient pillars. Pixel art retro style.",
+      "tags": ["pixel_art", "retro", "ruins", "exploration", "16bit"],
+      "pipeline": "flf2v_cinematic",
+      "resolution": [1024, 576],
+      "frames": 97,
+      "cfg": 3.5,
+      "steps": 24,
+      "lora_strength": 0.5,
+      "quality_score": 0.90,
+      "prompt_template": "{character_name} in {environment}. Pixel art style, retro 16-bit aesthetic.",
+      "negative_used": "blurry, low quality, text, watermark, deformed, disfigured",
+      "visual_notes": "Retro crunch filter (neighbor scaling) essential for sharp pixel art edges."
+    }
+  ],
+
+  "learnings": [
+    "Resolution 1024x576 is the sweet spot for 16:9 cinematic output on 16GB VRAM.",
+    "97 frames (8*12+1) is the maximum safe frame count for single-shot generation.",
+    "Sequential shot generation (one at a time) prevents VRAM crashes. NEVER run parallel shots.",
+    "The 2-pass sigma schedule (8-step pass1 + 3-step pass2) produces the sharpest output.",
+    "Character consistency is maintained by using high-fidelity anchor keyframes from Gemini/Grok.",
+    "Crossfade duration of 1.0s feels cinematic. 0.5s is too abrupt for slow narrative pacing.",
+    "CRF 10 with 10-bit color (yuv420p10le) is production quality without excessive file size.",
+    "The 'Retro Crunch' filter (scale=256:-1:flags=neighbor,scale=1024:-1:flags=neighbor) is ONLY for pixel art.",
+    "Always use absolute paths in FFmpeg concat demuxer lists to avoid nested path resolution errors.",
+    "CFG above 4.0 causes 'deep-frying' artifacts with the distilled LTX 2.3 model."
+  ],
+
+  "failure_modes": [
+    {
+      "symptom": "System crash / force reboot during generation",
+      "cause": "Multiple shots queued simultaneously exhausted VRAM",
+      "fix": "Set max_concurrent_shots=1 in production_envelopes.json"
+    },
+    {
+      "symptom": "FFmpeg TransitionError: Impossible to open nested path",
+      "cause": "Relative paths in concat demuxer list files",
+      "fix": "Use Path.resolve() for all temp dirs, list files, and output paths"
+    },
+    {
+      "symptom": "Character drifts into wrong design (e.g., Mario instead of Henrio)",
+      "cause": "Insufficient anchoring in keyframe prompts",
+      "fix": "Use strict character description in every prompt: (hair color, outfit, specific features)"
+    },
+    {
+      "symptom": "Output looks blurry / 'deep-fried'",
+      "cause": "CFG too high or wrong sigma schedule",
+      "fix": "Keep CFG <= 4.0 for distilled model. Use proven sigma schedules from envelopes."
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+title: "The Great Escape"
+fps: 25
+style_prompt: >-
+  classic hand-drawn cartoon animation, bold black outlines,
+  flat cel shading, vibrant saturated colors, exaggerated
+  character proportions, squash and stretch motion, clean
+  vector-like linework, painted backgrounds, retro cartoon
+  style like classic Hanna-Barbera and Tex Avery animation
+negative_prompt: >-
+  blurry, low quality, distorted, deformed, ugly, watermark,
+  text overlay, compression artifacts, photorealistic, 3D render,
+  CGI, live action, realistic skin texture, uncanny valley
+output_dir: ./output/great_escape
+
+shots:
+  - shot_id: 1
+    prompt: >-
+      Establishing shot of a cartoon prison fortress on top of a hill,
+      dramatic clouds in the sky, searchlights sweeping, guard towers
+      with silly-looking bird guards
+    duration_frames: 81
+    camera: zoom_in
+    transition_in: cut
+    transition_duration: 0.5
+    seed: -1
+    width: 768
+    height: 512
+
+  - shot_id: 2
+    prompt: >-
+      Inside a cartoon jail cell, a clever orange fox character
+      with a striped prisoner outfit examines the cell bars,
+      scratching chin thoughtfully, light bulb appears above head
+    duration_frames: 81
+    camera: push_in
+    transition_in: crossfade
+    transition_duration: 0.5
+    seed: -1
+    width: 768
+    height: 512
+
+  - shot_id: 3
+    prompt: >-
+      The fox character squeezes through the cell bars with
+      exaggerated squash and stretch animation, body becomes
+      impossibly thin then snaps back to normal shape on the
+      other side, comedic timing
+    duration_frames: 81
+    camera: tracking
+    transition_in: dissolve
+    transition_duration: 0.3
+    seed: -1
+    width: 768
+    height: 512
+
+  - shot_id: 4
+    prompt: >-
+      Wide shot of the fox character tip-toeing past sleeping
+      guard dogs, exaggerated sneaking pose, spotlight barely
+      missing, comedic tension
+    duration_frames: 81
+    camera: pan_right
+    transition_in: crossfade
+    transition_duration: 0.5
+    seed: -1
+    width: 768
+    height: 512
+
+  - shot_id: 5
+    prompt: >-
+      The fox character launches over the prison wall using a
+      catapult made from a bent tree, flying through the air
+      with arms and legs spinning in a cartoon wheel, freedom
+      expression on face
+    duration_frames: 81
+    camera: crane_up
+    transition_in: wipe_left
+    transition_duration: 0.4
+    seed: -1
+    width: 768
+    height: 512
+
+  - shot_id: 6
+    prompt: >-
+      Wide landscape shot, the fox character lands perfectly
+      on a country road and runs toward the sunset horizon,
+      dust cloud trail behind, classic cartoon ending pose,
+      THE END iris closing
+    duration_frames: 81
+    camera: zoom_out
+    transition_in: crossfade
+    transition_duration: 0.5
+    seed: -1
+    width: 768
+    height: 512

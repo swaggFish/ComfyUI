@@ -1,0 +1,47 @@
+title: "Simple 3-Shot Test"
+fps: 25
+style_prompt: >-
+  classic hand-drawn cartoon animation, bold black outlines,
+  flat cel shading, vibrant saturated colors, painted backgrounds,
+  retro cartoon style
+negative_prompt: >-
+  blurry, low quality, distorted, photorealistic, 3D render
+output_dir: ./output/test_3shot
+
+shots:
+  - shot_id: 1
+    prompt: >-
+      A cartoon cat sitting on a fence under a full moon,
+      peaceful night scene, stars twinkling
+    duration_frames: 33
+    camera: static
+    transition_in: cut
+    transition_duration: 0.5
+    seed: 42
+    width: 768
+    height: 512
+
+  - shot_id: 2
+    prompt: >-
+      The cartoon cat spots a butterfly and leaps off the fence,
+      exaggerated jump with stretched body, reaching for butterfly
+    duration_frames: 33
+    camera: tracking
+    transition_in: crossfade
+    transition_duration: 0.5
+    seed: -1
+    width: 768
+    height: 512
+
+  - shot_id: 3
+    prompt: >-
+      The cartoon cat lands in a flower garden, surrounded by
+      colorful flowers, butterfly lands on nose, cross-eyed
+      surprised expression
+    duration_frames: 33
+    camera: zoom_in
+    transition_in: dissolve
+    transition_duration: 0.5
+    seed: -1
+    width: 768
+    height: 512

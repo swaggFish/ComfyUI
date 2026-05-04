@@ -1,0 +1,88 @@
+title: "Super Henrio: The Mushroom Quest"
+fps: 25
+style_prompt: >-
+  16-bit pixel art style, vibrant saturated colors, detailed character sprites,
+  clean pixel-perfect linework, retro gaming aesthetic, SNES-era graphics,
+  bold sprite outlines, parallax background layers, classic platformer look
+negative_prompt: >-
+  blurry, smooth, photorealistic, 3D render, CGI, anti-aliased,
+  smudged pixels, gradient shading, realistic lighting, 4K, 8K
+output_dir: ./output/super_henrio
+
+shots:
+  - shot_id: 1
+    prompt: >-
+      Establishing shot of Henrio, a boy in a yellow shirt and red shorts, 
+      jumping over a pit in a bright Mushroom Kingdom. Lush green hills,
+      giant mushrooms, and a blue sky with blocky clouds in the background.
+    duration_frames: 81
+    camera: tracking
+    transition_in: cut
+    seed: 12345
+    width: 1024
+    height: 576
+
+  - shot_id: 2
+    prompt: >-
+      Wide shot, Henrio walking through a forest of giant polka-dot mushrooms.
+      He encounters a friendly mushroom-headed person who points toward
+      a massive green warp pipe.
+    duration_frames: 81
+    camera: pan_right
+    transition_in: crossfade
+    transition_duration: 0.5
+    seed: -1
+    width: 1024
+    height: 576
+
+  - shot_id: 3
+    prompt: >-
+      Inside a dark stone cavern, Henrio cautiously tip-toes past
+      turtle people with green shells. Glowing lava streams in the 
+      background cast an orange light on the pixelated walls.
+    duration_frames: 81
+    camera: push_in
+    transition_in: dissolve
+    transition_duration: 0.5
+    seed: -1
+    width: 1024
+    height: 576
+
+  - shot_id: 4
+    prompt: >-
+      Dramatic low-angle shot of a giant spikey fortress with 
+      Bowser's face carved into the entrance. Fireballs fly from 
+      the towers as Henrio approaches the drawbridge.
+    duration_frames: 81
+    camera: zoom_in
+    transition_in: crossfade
+    transition_duration: 0.5
+    seed: -1
+    width: 1024
+    height: 576
+
+  - shot_id: 5
+    prompt: >-
+      Epic boss battle on a bridge over a lake of fire. Bowser, 
+      the giant spikey turtle, breathes a stream of pixelated 
+      fire at Henrio (a boy in a yellow shirt and red shorts), 
+      who is mid-air performing a heroic jump.
+    duration_frames: 81
+    camera: handheld
+    transition_in: cut
+    seed: -1
+    width: 1024
+    height: 576
+
+  - shot_id: 6
+    prompt: >-
+      Victory screen: Henrio and the Princess standing together 
+      in front of a castle. A giant pixel-art heart appears, 
+      and the text "THANK YOU HENRIO!" flashes in a retro font.
+    duration_frames: 81
+    camera: zoom_out
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576

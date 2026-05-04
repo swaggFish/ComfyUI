@@ -1,0 +1,220 @@
+# ══════════════════════════════════════════════════════════════════════
+# Super Noah vs. Dr. Robotnik — Full Production Storyboard
+# ══════════════════════════════════════════════════════════════════════
+# Runtime: ~60 seconds (12 shots × 97 frames × 25fps)
+# Pipeline: flf2v_cinematic (FLF2V First/Last Frame to Video)
+# Resolution: 1024×576 (16:9)
+# Envelope: production_envelopes.json → flf2v_cinematic
+# ══════════════════════════════════════════════════════════════════════
+
+title: "Super Noah vs. Dr. Robotnik"
+style: comic
+fps: 25
+
+# ── Character Bible ──────────────────────────────────────────────────
+# Noah (Pre-Powers): 10-year-old boy, blonde hair, yellow t-shirt, jeans, sneakers
+# Super Noah: Blue high-tech suit, silver V-wing emblem on chest, flowing blue cape
+# Dr. Robotnik: Round body, red coat, brown mustache, goggles, glass-dome cockpit
+# Location: Herriman, Utah — Oquirrh Mountains, Blackridge Reservoir, suburban streets
+# ─────────────────────────────────────────────────────────────────────
+
+shots:
+  # ── ACT 1: THE ORIGIN ──────────────────────────────────────────────
+
+  - shot_id: 1
+    prompt: >-
+      Noah, a 10-year-old boy with blonde hair in a yellow t-shirt,
+      reaches toward a glowing blue spider hanging from a silk thread
+      in a sunlit dusty attic filled with cardboard boxes and old toys.
+      Warm nostalgic lighting, dust particles floating in sunbeams.
+    duration_frames: 97
+    camera: push_in
+    transition_in: cut
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/noah_shot1_start.png
+    last_frame_path: input/noah_shot1_end.png
+
+  - shot_id: 2
+    prompt: >-
+      Noah wakes up in his bedroom the next morning, confused.
+      He is floating a foot above his bed in blue pajamas. Comic books
+      and bedsheets swirl around him. Superhero posters on the walls.
+      Bright morning sunlight streams through the window.
+    duration_frames: 97
+    camera: static
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/noah_shot2_start.png
+    last_frame_path: input/noah_shot2_end.png
+
+  - shot_id: 3
+    prompt: >-
+      Noah in his lush green backyard in Herriman, Utah. The Oquirrh
+      Mountains are visible behind suburban houses. He takes a giant
+      leap and begins to hover, arms outstretched in shock. Yellow
+      t-shirt, jeans, sneakers. Bright sunny afternoon.
+    duration_frames: 97
+    camera: crane_up
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/noah_shot3_start.png
+    last_frame_path: input/noah_shot3_end.png
+
+  # ── ACT 2: THE TRANSFORMATION ──────────────────────────────────────
+
+  - shot_id: 4
+    prompt: >-
+      Noah standing on a rocky peak in the Oquirrh Mountains at sunset.
+      A swirl of magical blue energy surrounds him as he transforms
+      into Super Noah: blue suit with silver V-wing emblems, flowing
+      blue cape. Golden hour lighting, dramatic atmosphere.
+    duration_frames: 97
+    camera: orbit
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/noah_shot4_start.png
+    last_frame_path: input/noah_shot4_end.png
+
+  - shot_id: 5
+    prompt: >-
+      Super Noah (blue suit, silver emblem, cape) hovering over
+      Blackridge Reservoir in Herriman. Mountains reflected in the
+      sparkling water below. He looks at his hands, realizing his
+      great responsibility. Heroic sunset lighting.
+    duration_frames: 97
+    camera: static
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/noah_shot5_start.png
+    last_frame_path: input/noah_shot5_end.png
+
+  - shot_id: 6
+    prompt: >-
+      Super Noah patrolling the sky over Herriman Town Center.
+      Flying with calm confidence. The Oquirrh Mountain range is in
+      the background with a beautiful sunset glow. Blue cape flowing.
+    duration_frames: 97
+    camera: tracking
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/noah_shot6_start_patrol.png
+    last_frame_path: input/noah_shot6_start_patrol.png
+
+  # ── ACT 3: THE THREAT ──────────────────────────────────────────────
+
+  - shot_id: 7
+    prompt: >-
+      Dr. Robotnik's giant spherical tank with massive robotic arms
+      rolling through a suburban street in Herriman. People running
+      in fear. Super Noah visible as a blue streak in the distant sky,
+      approaching fast. Dramatic action lighting.
+    duration_frames: 97
+    camera: crane_down
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/noah_shot7_start.png
+    last_frame_path: input/noah_shot7_end.png
+
+  - shot_id: 8
+    prompt: >-
+      Super Noah (blue suit, cape) flying into a large oak tree in a
+      Herriman neighborhood. He gently scoops up a tiny frightened
+      ginger kitten from a high branch. Robotnik's tank visible in
+      the background down the street. Heroic lighting.
+    duration_frames: 97
+    camera: push_in
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/noah_shot8_start.png
+    last_frame_path: input/noah_shot8_end.png
+
+  # ── ACT 4: THE BATTLE ──────────────────────────────────────────────
+
+  - shot_id: 9
+    prompt: >-
+      Low-angle cinematic shot from the ground. Super Noah soaring
+      directly over the camera, blue cape billowing. Flying fast
+      toward Robotnik's tank. Utah mountains in background. Motion
+      blur and speed effects.
+    duration_frames: 97
+    camera: low_angle
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/noah_shot9_start.png
+    last_frame_path: input/noah_shot9_end.png
+
+  - shot_id: 10
+    prompt: >-
+      Super Noah hovering at eye-level with the glass cockpit of
+      Dr. Robotnik's giant tank. Arms crossed, serious expression.
+      Robotnik visible inside, shaking his fist in frustration.
+      Oquirrh Mountains in the background. Intense standoff.
+    duration_frames: 97
+    camera: static
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/noah_shot10_start.png
+    last_frame_path: input/noah_shot10_end.png
+
+  - shot_id: 11
+    prompt: >-
+      Super Noah mid-air, bringing his hands together in a powerful
+      Sonic Clap. A massive shockwave of blue energy ripples out,
+      shattering the robotic arms of Robotnik's tank. Debris and
+      sparks flying everywhere. Intense cinematic action.
+    duration_frames: 97
+    camera: dynamic
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/noah_shot11_start.png
+    last_frame_path: input/noah_shot11_end.png
+
+  # ── ACT 5: THE VICTORY ─────────────────────────────────────────────
+
+  - shot_id: 12
+    prompt: >-
+      Super Noah lands in a grassy park in Herriman at sunset.
+      A crowd of happy children, parents, and babies cheer around
+      him. He holds a rescued golden puppy and winks at the camera.
+      Orange and pink sunset sky. Confetti falling. Victory pose.
+    duration_frames: 97
+    camera: crane_up
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/noah_shot12_start.png
+    last_frame_path: input/noah_shot12_end.png

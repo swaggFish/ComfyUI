@@ -1,0 +1,119 @@
+# ══════════════════════════════════════════════════════════════════════
+# Lucy's Time-Traveling Adventures — Full Storyboard
+# ══════════════════════════════════════════════════════════════════════
+# Runtime: ~30 seconds (6 shots × 97 frames × 25fps)
+# Pipeline: flf2v_cinematic
+# Resolution: 1024×576 (16:9)
+# ══════════════════════════════════════════════════════════════════════
+
+title: "Lucy's Time-Traveling Adventures"
+style: comic
+fps: 25
+
+# ── Character Bible ──────────────────────────────────────────────────
+# Lucy: ~5-year-old girl, blonde hair, big smile
+# The Minnie Mobile: Bright pink power wheels car with white polka dots
+# Time Portal: Swirling pink and gold sparkle vortex
+# ─────────────────────────────────────────────────────────────────────
+
+shots:
+  - shot_id: 1
+    prompt: >-
+      Lucy, a cute blonde girl around 5 years old in a grey hoodie,
+      drives her bright pink Minnie Mouse power wheels car with white
+      polka dots into a swirling magical time portal made of glowing
+      pink and gold light. Sparkles and stars surround the portal.
+      Suburban neighborhood background. Golden hour lighting. Magical.
+    duration_frames: 97
+    camera: push_in
+    transition_in: cut
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/lucy_shot1_start.png
+    last_frame_path: input/lucy_shot1_end.png
+
+  - shot_id: 2
+    prompt: >-
+      Lucy's bright pink Minnie Mouse power wheels car bursts out of
+      a swirling time portal onto a dusty frontier trail in the
+      American old west 1840s. Pioneer town with log cabins, saloon,
+      and covered wagons. Lucy wears a pink bonnet and peach pioneer
+      dress. She waves at friendly cowboys and horses. Golden prairie.
+    duration_frames: 97
+    camera: tracking
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/lucy_shot2_start.png
+    last_frame_path: input/lucy_shot2_end.png
+
+  - shot_id: 3
+    prompt: >-
+      A magical time portal opens in the pioneer meadow. Lucy walks
+      toward it in her peach pioneer bonnet and dress, waving goodbye
+      to the horses. The portal swirls with pink and rainbow colors
+      as she steps through into a grand theater with spotlights.
+      Transition from golden prairie to stage lighting.
+    duration_frames: 97
+    camera: push_in
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/lucy_shot3_start.png
+    last_frame_path: input/lucy_shot3_end.png
+
+  - shot_id: 4
+    prompt: >-
+      Lucy performs an amazing dance on a grand theater stage. She
+      wears a sparkly pink leotard and rainbow tutu. Spotlights and
+      stage lights create a rainbow glow. The audience cheers. She
+      does graceful twirls and leaps with one hand above her head.
+      Magical sparkles trail behind her movements. Joyful energy.
+    duration_frames: 97
+    camera: orbit
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/lucy_shot4_start.png
+    last_frame_path: input/lucy_shot4_end.png
+
+  - shot_id: 5
+    prompt: >-
+      Lucy sits on dramatic red sandstone rocks in a Utah canyon.
+      She wears a pink striped shirt and jeans. Massive natural
+      arches tower above. She discovers a glowing crystal embedded
+      in the rock. Desert sunlight illuminates the canyon walls in
+      warm golden light. Sense of wonder and adventure.
+    duration_frames: 97
+    camera: crane_up
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/lucy_shot5_start.png
+    last_frame_path: input/lucy_shot5_end.png
+
+  - shot_id: 6
+    prompt: >-
+      Lucy drives her pink Minnie Mouse power wheels car out of a
+      fading time portal, arriving back in her suburban neighborhood
+      at sunset. She waves happily. Pink sparkles dissolve behind
+      her. The sky glows golden and orange. Her family watches from
+      the porch, smiling. Warm, happy homecoming. The end.
+    duration_frames: 97
+    camera: crane_up
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: input/lucy_shot6_start.png
+    last_frame_path: input/lucy_shot6_end.png
