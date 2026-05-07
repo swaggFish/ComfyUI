@@ -187,7 +187,7 @@ def evaluate_shot_with_gemini(
     evidence_frames: dict[str, str],
     prompt: str,
     api_key: str,
-    model: str = "gemini-2.0-flash",
+    model: str = "gemini-2.5-flash",
 ) -> ShotEvaluation:
     """Phase 2+3: Send evidence frames to Gemini Flash for structured evaluation.
 
@@ -211,7 +211,13 @@ def evaluate_shot_with_gemini(
             "google-genai is required. Install with: pip install google-genai"
         )
 
-    client = genai.Client(api_key=api_key)
+    # Force the client to route to Vertex AI instead of the Developer API.
+    # This bypasses AI Studio's prepay requirements and directly consumes the $300 GCP trial.
+    client = genai.Client(
+        vertexai=True,
+        project="project-752e56a3-dc98-4377-b37",
+        location="us-central1"
+    )
 
     # Build the multimodal content with all 3 evidence frames
     contents = []
@@ -385,7 +391,7 @@ class Director:
     def __init__(
         self,
         api_key: Optional[str] = None,
-        model: str = "gemini-2.0-flash",
+        model: str = "gemini-2.5-flash",
         max_retries: int = 3,
         evidence_dir: str = "/tmp/director_evidence",
     ):
@@ -399,16 +405,14 @@ class Director:
         self.history: list[ShotCorrectionPlan] = []
 
         if not self.api_key:
-            logger.warning(
-                "Director: No Gemini API key provided. "
-                "Set GEMINI_API_KEY env var or pass api_key= to Director(). "
-                "Director will auto-pass all shots."
+            logger.info(
+                "Director: No GEMINI_API_KEY found. Assuming Application Default Credentials (ADC) are active."
             )
 
     @property
     def enabled(self) -> bool:
         """Is the Director operational?"""
-        return bool(self.api_key)
+        return True
 
     def review_clip(
         self,
@@ -429,7 +433,7 @@ class Director:
         if not self.enabled:
             return ShotEvaluation(
                 passed=True,
-                summary="Director disabled (no API key); auto-passed."
+                summary="Director disabled; auto-passed."
             )
 
         logger.info(f"🎬 Director reviewing Shot {shot_id}...")

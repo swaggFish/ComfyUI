@@ -15,7 +15,7 @@ fps: 25
 # The Minnie Mobile: Bright pink power wheels car with white polka dots
 # Time Portal: Swirling pink and gold sparkle vortex
 # ─────────────────────────────────────────────────────────────────────
-
+c
 shots:
   - shot_id: 1
     prompt: >-

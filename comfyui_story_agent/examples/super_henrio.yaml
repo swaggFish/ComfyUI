@@ -18,7 +18,7 @@ shots:
     duration_frames: 81
     camera: tracking
     transition_in: cut
-    seed: 12345
+    seed: 12346
     width: 1024
     height: 576
 

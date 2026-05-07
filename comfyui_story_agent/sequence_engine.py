@@ -110,9 +110,9 @@ class SequenceEngine:
 
         # Initialize Director Agent
         director_key = gemini_api_key or os.environ.get("GEMINI_API_KEY", "")
-        if enable_director and director_key:
+        if enable_director:
             self.director = Director(
-                api_key=director_key,
+                api_key=director_key if director_key else None,
                 max_retries=director_max_retries,
                 evidence_dir=str(self.output_dir / "_director_evidence"),
             )
@@ -121,7 +121,7 @@ class SequenceEngine:
             )
         else:
             self.director = None
-            logger.info("Director Agent DISABLED (no API key or explicitly disabled)")
+            logger.info("Director Agent DISABLED (explicitly disabled)")
 
     def generate_sequence(
         self,

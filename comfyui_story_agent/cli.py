@@ -595,10 +595,6 @@ def _cmd_review(args):
     from .director import Director, extract_evidence_frames
 
     api_key = os.environ.get("GEMINI_API_KEY", "")
-    if not api_key:
-        print("✗ GEMINI_API_KEY not set. Export it first:")
-        print("  export GEMINI_API_KEY='your-key-here'")
-        return 1
 
     director = Director(
         api_key=api_key,
@@ -622,6 +618,7 @@ def _cmd_review(args):
     print(f"🎬 Director reviewing {len(clip_paths)} clip(s)...")
     results = []
 
+    import time
     for i, clip_path in enumerate(clip_paths):
         if not clip_path.exists():
             print(f"  ⏭️  Skipping (not found): {clip_path}")
@@ -667,6 +664,11 @@ def _cmd_review(args):
             "recommended_action": evaluation.recommended_action.value,
             "summary": evaluation.summary,
         })
+
+        # Sleep to avoid hitting Gemini free-tier rate limits
+        if i < len(clip_paths) - 1:
+            print(f"  ⏳ Pausing 15s to respect Google free-tier limits...")
+            time.sleep(15)
 
     # Save report
     import json
