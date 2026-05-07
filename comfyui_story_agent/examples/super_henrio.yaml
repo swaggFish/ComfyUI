@@ -1,88 +1,66 @@
 title: "Super Henrio: The Mushroom Quest"
 fps: 25
-style_prompt: >-
-  16-bit pixel art style, vibrant saturated colors, detailed character sprites,
-  clean pixel-perfect linework, retro gaming aesthetic, SNES-era graphics,
-  bold sprite outlines, parallax background layers, classic platformer look
-negative_prompt: >-
-  blurry, smooth, photorealistic, 3D render, CGI, anti-aliased,
-  smudged pixels, gradient shading, realistic lighting, 4K, 8K
-output_dir: ./output/super_henrio
+style_prompt: "16-bit pixel art style, vibrant saturated colors, detailed character sprites, clean pixel-perfect linework, retro gaming aesthetic, SNES-era graphics, bold sprite outlines, parallax background layers, classic platformer look"
+negative_prompt: "blurry, smooth, photorealistic, 3D render, CGI, anti-aliased, smudged pixels, gradient shading, realistic lighting, 4K, 8K"
+output_dir: "output/super_henrio_hybrid_slow"
 
 shots:
   - shot_id: 1
-    prompt: >-
-      Establishing shot of Henrio, a boy in a yellow shirt and red shorts, 
-      jumping over a pit in a bright Mushroom Kingdom. Lush green hills,
-      giant mushrooms, and a blue sky with blocky clouds in the background.
+    prompt: "Establishing shot of Henrio, a boy in a yellow shirt and red shorts, jumping over a pit in a bright Mushroom Kingdom. Lush green hills, giant mushrooms, and a blue sky with blocky clouds in the background."
     duration_frames: 81
-    camera: tracking
-    transition_in: cut
-    seed: 12346
+    camera: "tracking"
+    transition_in: "cut"
+    first_frame_path: "output/super_henrio_anchors/shot_001.png"
+    seed: -1
     width: 1024
     height: 576
 
   - shot_id: 2
-    prompt: >-
-      Wide shot, Henrio walking through a forest of giant polka-dot mushrooms.
-      He encounters a friendly mushroom-headed person who points toward
-      a massive green warp pipe.
+    prompt: "Henrio walking through a dense mushroom forest, saturated colors. He encounters a friendly mushroom person (Toad) near a green warp pipe."
     duration_frames: 81
-    camera: pan_right
-    transition_in: crossfade
-    transition_duration: 0.5
+    camera: "pan_right"
+    transition_in: "crossfade"
+    first_frame_path: "output/super_henrio_anchors/shot_002.png"
     seed: -1
     width: 1024
     height: 576
 
   - shot_id: 3
-    prompt: >-
-      Inside a dark stone cavern, Henrio cautiously tip-toes past
-      turtle people with green shells. Glowing lava streams in the 
-      background cast an orange light on the pixelated walls.
+    prompt: "Interior of a dark, stone cavern. Henrio is tip-toeing past a group of sleeping turtle people (Koopas). Glowing lava in the background."
     duration_frames: 81
-    camera: push_in
-    transition_in: dissolve
-    transition_duration: 0.5
+    camera: "static"
+    transition_in: "dissolve"
+    first_frame_path: "output/super_henrio_anchors/shot_003.png"
     seed: -1
     width: 1024
     height: 576
 
   - shot_id: 4
-    prompt: >-
-      Dramatic low-angle shot of a giant spikey fortress with 
-      Bowser's face carved into the entrance. Fireballs fly from 
-      the towers as Henrio approaches the drawbridge.
+    prompt: "Henrio standing in front of a giant spikey fortress with Bowser's face carved into the entrance. Fireballs flying from the towers."
     duration_frames: 81
-    camera: zoom_in
-    transition_in: crossfade
-    transition_duration: 0.5
+    camera: "zoom_in"
+    transition_in: "cut"
+    first_frame_path: "output/super_henrio_anchors/shot_004.png"
     seed: -1
     width: 1024
     height: 576
 
   - shot_id: 5
-    prompt: >-
-      Epic boss battle on a bridge over a lake of fire. Bowser, 
-      the giant spikey turtle, breathes a stream of pixelated 
-      fire at Henrio (a boy in a yellow shirt and red shorts), 
-      who is mid-air performing a heroic jump.
+    prompt: "Epic battle on a bridge over a lake of fire. Bowser breathing fire at Henrio. Henrio performing a heroic jump."
     duration_frames: 81
-    camera: handheld
-    transition_in: cut
+    camera: "tracking"
+    transition_in: "crossfade"
+    first_frame_path: "output/super_henrio_anchors/shot_005.png"
     seed: -1
     width: 1024
     height: 576
 
   - shot_id: 6
-    prompt: >-
-      Victory screen: Henrio and the Princess standing together 
-      in front of a castle. A giant pixel-art heart appears, 
-      and the text "THANK YOU HENRIO!" flashes in a retro font.
+    prompt: "Victory screen! Henrio and the Princess standing in front of the castle. Heart symbols and text 'THANK YOU HENRIO!' appearing in retro font."
     duration_frames: 81
-    camera: zoom_out
-    transition_in: crossfade
-    transition_duration: 1.0
+    camera: "static"
+    transition_in: "crossfade"
+    first_frame_path: "output/super_henrio_anchors/shot_006.png"
     seed: -1
     width: 1024
     height: 576

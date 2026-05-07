@@ -28,7 +28,7 @@
     "4": {
       "class_type": "CLIPTextEncode",
       "inputs": {
-        "text": "16-bit pixel art style, vibrant saturated colors, detailed character sprites, clean pixel-perfect linework, retro gaming aesthetic, SNES-era graphics, bold sprite outlines, parallax background layers, classic platformer look, Victory screen: Henrio and the Princess standing together  in front of a castle. A giant pixel-art heart appears,  and the text \"THANK YOU HENRIO!\" flashes in a retro font., camera slowly zooms out",
+        "text": "16-bit pixel art style, vibrant saturated colors, detailed character sprites, clean pixel-perfect linework, retro gaming aesthetic, SNES-era graphics, bold sprite outlines, parallax background layers, classic platformer look, Victory screen! Henrio and the Princess standing in front of the castle. Heart symbols and text 'THANK YOU HENRIO!' appearing in retro font.",
         "clip": [
           "2",
           0
@@ -101,7 +101,7 @@
     "11": {
       "class_type": "RandomNoise",
       "inputs": {
-        "noise_seed": 3427935193
+        "noise_seed": 1248754046
       }
     },
     "12": {
@@ -202,7 +202,7 @@
     "19": {
       "class_type": "RandomNoise",
       "inputs": {
-        "noise_seed": 3427935193
+        "noise_seed": 1248754046
       }
     },
     "20": {
@@ -274,7 +274,7 @@
     "30": {
       "class_type": "LoadImage",
       "inputs": {
-        "image": "shot_005_last.png"
+        "image": "shot_006.png"
       }
     },
     "31": {
@@ -329,6 +329,6 @@
       }
     }
   },
-  "client_id": "01b15043-7f51-4393-a9c1-ffc8e1602903",
-  "prompt_id": "5f97a719-09f9-4e1c-9c28-5dd3d6e63e3b"
+  "client_id": "e142f8d3-3514-4508-b6cc-9d28b42dfe33",
+  "prompt_id": "6a4842d2-1af9-4de6-acce-84c0609bc024"
 }
