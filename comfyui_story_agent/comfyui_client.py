@@ -37,7 +37,7 @@ class ComfyUIClient:
     """Client for the ComfyUI WebSocket/REST API."""
 
     def __init__(self, host: str = "127.0.0.1", port: int = 8188,
-                 timeout: int = 600, max_retries: int = 3):
+                 timeout: int = 3600, max_retries: int = 3):
         """
         Args:
             host: ComfyUI server hostname
@@ -152,6 +152,9 @@ class ComfyUIClient:
                     raise ComfyUIError(f"Queue error: {result['error']}")
                 logger.info(f"Queued prompt {prompt_id}")
                 return prompt_id
+        except urllib.error.HTTPError as e:
+            error_body = e.read().decode('utf-8')
+            raise ComfyUIError(f"Failed to queue prompt: {e} - Body: {error_body}")
         except urllib.error.URLError as e:
             raise ComfyUIError(f"Failed to queue prompt: {e}")
 

@@ -1,0 +1,28 @@
+title: 'Marketing: A 3-shot cozy aesthe (Shot 2 Only)'
+style: comic
+fps: 24
+style_prompt: photorealistic, 8k resolution, cinematic lighting, highly detailed,
+  professional cinematography
+negative_prompt: cartoon, animated, illustration, low quality, deformed, blurry
+output_dir: ./output/story
+shots:
+- shot_id: 2
+  prompt: 'Extreme close up of A 3-shot cozy aesthetic marketing video for Eight Sleep
+    Pod. Shot 1: A cinematic, slow-motion shot of a person falling onto a luxurious,
+    softly lit bed at night, moody blue and warm amber lighting. Shot 2: Extreme close-up
+    of the Eight Sleep cooling grid technology and modern app interface glowing in
+    the dark, shallow depth of field. Shot 3: The person waking up looking incredibly
+    refreshed, sunlight softly filtering through the blinds, peaceful and mindful
+    morning. detailing its high-quality material and core functionality, shallow depth
+    of field.'
+  duration_frames: 33
+  camera: zoom in
+  transition_in: cut
+  transition_duration: 0.5
+  first_frame_path: /home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_campaign/eight_sleep_anchors/shot2_start.png
+  last_frame_path: null
+  seed: -1
+  width: 1280
+  height: 704
+  style_override: null
+  skill: ltx_golden_i2v_v1

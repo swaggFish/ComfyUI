@@ -1,0 +1,98 @@
+{
+  "1": {
+    "class_type": "VHS_LoadVideo",
+    "inputs": {
+      "video": "semrush_commercial.mp4",
+      "force_rate": 0,
+      "force_size": "Disabled",
+      "custom_width": 512,
+      "custom_height": 512,
+      "frame_load_cap": 0,
+      "skip_first_frames": 0,
+      "select_every_nth": 1
+    }
+  },
+  "2": {
+    "class_type": "VHS_LoadAudio",
+    "inputs": {
+      "audio_file": "semrush_voiceover.mp3"
+    }
+  },
+  "3": {
+    "class_type": "VideoLengthAdjuster",
+    "inputs": {
+      "mode": "loop_to_audio",
+      "fps": 24,
+      "silent_padding_sec": 0.5,
+      "images": ["1", 0],
+      "audio": ["2", 0]
+    }
+  },
+  "4": {
+    "class_type": "LatentSyncNode",
+    "inputs": {
+      "seed": 42,
+      "lips_expression": 1.5,
+      "inference_steps": 20,
+      "images": ["3", 0],
+      "audio": ["3", 1]
+    }
+  },
+  "5": {
+    "class_type": "BboxDetectorLoader",
+    "inputs": {
+      "model_name": "bbox/face_yolov8m.pt"
+    }
+  },
+  "6": {
+    "class_type": "SAMLoader",
+    "inputs": {
+      "model_name": "sam_vit_b_01ec64.pth",
+      "device_mode": "AUTO"
+    }
+  },
+  "7": {
+    "class_type": "FaceDetailer",
+    "inputs": {
+      "guide_size": 384,
+      "guide_size_for": "bbox",
+      "max_size": 1024,
+      "seed": 1234,
+      "steps": 20,
+      "cfg": 8,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 0.55,
+      "feather": 12,
+      "noise_mask": true,
+      "force_inpaint": true,
+      "bbox_margin": 10,
+      "bbox_crop_factor": 3,
+      "sam_detection_hint": "center-1",
+      "sam_dilation": 0,
+      "sam_crop_factor": 3,
+      "sam_mask_hint_bg": "black",
+      "sam_mask_hint_use_negative": "False",
+      "drop_size": 10,
+      "image": ["4", 0],
+      "bbox_detector": ["5", 0],
+      "sam_model_opt": ["6", 0]
+    }
+  },
+  "8": {
+    "class_type": "VHS_VideoCombine",
+    "inputs": {
+      "frame_rate": 24,
+      "loop_count": 0,
+      "filename_prefix": "Photoreal_Dubbing",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": true,
+      "pingpong": false,
+      "save_output": true,
+      "images": ["7", 0],
+      "audio": ["4", 1]
+    }
+  }
+}

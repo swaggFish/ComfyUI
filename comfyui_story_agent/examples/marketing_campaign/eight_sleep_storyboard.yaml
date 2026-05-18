@@ -1,0 +1,64 @@
+title: 'Marketing: A 3-shot cozy aesthe'
+style: comic
+fps: 24
+style_prompt: photorealistic, 8k resolution, cinematic lighting, highly detailed,
+  professional cinematography
+negative_prompt: cartoon, animated, illustration, low quality, deformed, blurry
+output_dir: ./output/story
+shots:
+- shot_id: 1
+  prompt: 'A cinematic, slow-motion shot of a person falling onto a luxurious, softly lit bed at night, moody blue and warm amber lighting.'
+  duration_frames: 121
+  camera: pan right
+  transition_in: cut
+  transition_duration: 0.5
+  first_frame_path: /home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_campaign/eight_sleep_anchors/shot1_start.png
+  last_frame_path: null
+  seed: 101
+  width: 1280
+  height: 704
+  style_override: null
+  skill: ltx_golden_i2v_v1
+  expected_text: null
+- shot_id: 2
+  prompt: 'Extreme close-up of the Eight Sleep cooling grid technology and modern app interface glowing in the dark, shallow depth of field.'
+  duration_frames: 121
+  camera: zoom in
+  transition_in: cut
+  transition_duration: 0.5
+  first_frame_path: /home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_campaign/eight_sleep_anchors/shot2_start.png
+  last_frame_path: null
+  seed: 102
+  width: 1280
+  height: 704
+  style_override: null
+  skill: ltx_golden_i2v_v1
+  expected_text: 'Eight Sleep'
+- shot_id: 3
+  prompt: 'The person waking up looking incredibly refreshed, sunlight softly filtering through the blinds, peaceful and mindful morning.'
+  duration_frames: 121
+  camera: static
+  transition_in: cut
+  transition_duration: 0.5
+  first_frame_path: /home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_campaign/eight_sleep_anchors/shot3_start.png
+  last_frame_path: /home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_campaign/eight_sleep_anchors/shot3_end.png
+  seed: 103
+  width: 1280
+  height: 704
+  style_override: null
+  skill: ltx_golden_i2v_v1
+  expected_text: null
+- shot_id: 4
+  prompt: 'A confident, well-rested professional sitting on the edge of the luxurious bed, looking directly at the camera and speaking warmly to the viewer. Sunlight filtering through the room.'
+  duration_frames: 121
+  camera: static
+  transition_in: cut
+  transition_duration: 0.5
+  first_frame_path: null
+  last_frame_path: null
+  seed: 104
+  width: 1280
+  height: 704
+  style_override: null
+  skill: ltx_golden_t2v_v1
+  expected_text: null

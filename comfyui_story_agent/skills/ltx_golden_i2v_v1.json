@@ -72,7 +72,7 @@
     "inputs": {
       "cfg": 1.0,
       "model": [
-        "3",
+        "100",
         0
       ],
       "positive": [
@@ -173,7 +173,7 @@
     "inputs": {
       "cfg": 1.0,
       "model": [
-        "3",
+        "100",
         0
       ],
       "positive": [
@@ -325,6 +325,17 @@
       ],
       "frame_idx": 0,
       "strength": 1.0
+    }
+  },
+  "100": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "lora_name": "VBVR-official-comfyui.safetensors",
+      "strength_model": 0.85,
+      "model": [
+        "3",
+        0
+      ]
     }
   }
 }

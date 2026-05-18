@@ -82,10 +82,14 @@ class SkillManager:
             if class_type in ["CLIPTextEncode", "GemmaTextEncoder", "LTXAVTextEncoderLoader"]:
                 if "text" in node_inputs and inputs.get("prompt"):
                     # Heuristic: if it looks like a positive prompt node
-                    if "negative" not in node_id.lower() and "bad" not in node_inputs.get("text", "").lower():
+                    text_val = node_inputs.get("text", "")
+                    text_str = text_val if isinstance(text_val, str) else ""
+                    if "negative" not in node_id.lower() and "bad" not in text_str.lower():
                         node_inputs["text"] = inputs["prompt"]
                 if "text" in node_inputs and inputs.get("negative"):
-                    if "negative" in node_id.lower() or "bad" in node_inputs.get("text", "").lower():
+                    text_val = node_inputs.get("text", "")
+                    text_str = text_val if isinstance(text_val, str) else ""
+                    if "negative" in node_id.lower() or "bad" in text_str.lower():
                         node_inputs["text"] = inputs["negative"]
 
             # 2. Seed Mapping
@@ -97,6 +101,7 @@ class SkillManager:
             if class_type in ["EmptyLatentImage", "EmptyLTXVLatentVideo"]:
                 if inputs.get("width"): node_inputs["width"] = inputs["width"]
                 if inputs.get("height"): node_inputs["height"] = inputs["height"]
+                if inputs.get("length") and "length" in node_inputs: node_inputs["length"] = inputs["length"]
 
             # 4. Image Input Mapping
             if class_type == "LoadImage":

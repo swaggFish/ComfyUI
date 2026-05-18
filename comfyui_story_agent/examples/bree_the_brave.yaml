@@ -1,0 +1,208 @@
+# ══════════════════════════════════════════════════════════════════════
+# Bree the Brave — Full Production Storyboard
+# ══════════════════════════════════════════════════════════════════════
+# Runtime: ~31 seconds (8 shots × 97 frames × 25fps)
+# Pipeline: flf2v_cinematic (FLF2V First/Last Frame to Video)
+# Resolution: 1024×576 (16:9)
+# ══════════════════════════════════════════════════════════════════════
+
+title: "Bree the Brave"
+style: fantasy_epic
+fps: 25
+style_prompt: "cinematic fantasy illustration style, rich painterly textures, dramatic lighting, warm earth tones, epic adventure aesthetic, detailed character designs, lush environments, medieval fantasy world"
+negative_prompt: "blurry, low quality, cartoon, chibi, pixel art, modern clothing, sci-fi, neon colors, abstract, minimalist"
+output_dir: "output/bree_the_brave"
+
+# ── Character Bible ──────────────────────────────────────────────────
+# Breanne the Bold: Young woman, auburn/red hair, green-brown adventurer's
+#   outfit, leather vest, determined expression, athletic build
+# Prince Mike: Handsome young man, dark brown hair, blue tunic, royal bearing
+# Zog: Massive evil dragon, dark scales, glowing orange eyes, fire breath
+# Desert Guide: Rugged man, blue tunic, dark hair, weathered features
+# Setting: Fantasy medieval world — stone cities, iron mountains, venom
+#   jungles, desert wastelands, ancient ruins
+# ─────────────────────────────────────────────────────────────────────
+
+shots:
+  # ── ACT 1: THE CALL ──────────────────────────────────────────────────
+
+  - shot_id: 1
+    prompt: >-
+      Breanne the Bold, a young woman with flowing auburn hair in a leather
+      adventurer's vest, and Prince Mike, a handsome man with dark hair in
+      a blue tunic, study a large parchment map together inside a warm
+      candlelit stone chamber. They trace a route to the City of Sun,
+      unaware of the danger ahead. Warm golden firelight, medieval fantasy
+      setting. Breanne says "We shall find it together, Mike." He replies
+      "I know, Breanne. Our quest begins."
+    duration_frames: 97
+    camera: push_in
+    transition_in: cut
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: "output/bree_the_brave_anchors/shot_001.png"
+
+  - shot_id: 2
+    prompt: >-
+      A massive dark dragon, Zog, swoops down from a stormy sky and
+      snatches Prince Mike in its enormous claws. Mike reaches out
+      desperately as the dragon carries him away. Breanne watches in
+      horror from below, silhouetted against the dark sky, screaming
+      "NOOO! MIKE!" Dramatic stormy lighting, dark clouds, the dragon's
+      wings spread wide against flashes of lightning.
+    duration_frames: 97
+    camera: crane_up
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: "output/bree_the_brave_anchors/shot_002.png"
+
+  # ── ACT 2: THE JOURNEY ──────────────────────────────────────────────
+
+  - shot_id: 3
+    prompt: >-
+      Breanne the Bold scaling a steep, craggy Iron Mountain face at
+      dawn. She climbs alone with fierce determination, gripping rocky
+      ledges. Jagged grey peaks tower above her, mist swirling below.
+      She wears her leather adventurer's gear with a sword on her back.
+      She whispers to herself "I will find you." Epic wide-angle
+      cinematic composition, cold blue and grey mountain tones.
+    duration_frames: 97
+    camera: crane_up
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: "output/bree_the_brave_anchors/shot_003.png"
+
+  - shot_id: 4
+    prompt: >-
+      Nighttime camp scene. Breanne sits alone by a small campfire in
+      a dark wilderness, studying a weathered map by firelight. She
+      plans her infiltration route, tracking the dragon's scent. Stars
+      fill the sky above. Her expression is focused and determined.
+      Warm orange firelight against deep blue night sky. She murmurs
+      "Where are you, my prince?" Lonely, contemplative atmosphere.
+    duration_frames: 97
+    camera: static
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: "output/bree_the_brave_anchors/shot_004.png"
+
+  - shot_id: 5
+    prompt: >-
+      Breanne and a rugged desert guide in a blue tunic cautiously
+      cross a dangerous rope bridge over a roaring jungle river. Lush
+      green venom jungle foliage surrounds them, mist rising from the
+      rapids below. The guide gestures urgently, saying "Cross quickly,
+      bold one." Breanne moves with careful determination. Dappled
+      green jungle light, perilous atmosphere, rushing water below.
+    duration_frames: 97
+    camera: tracking
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: "output/bree_the_brave_anchors/shot_005.png"
+
+  # ── ACT 3: THE TRIAL ────────────────────────────────────────────────
+
+  - shot_id: 6
+    prompt: >-
+      Breanne stands inside a dark ancient stone chamber, holding a
+      flaming torch up to a wall covered in cryptic dragon-language
+      runes and carved symbols. She studies the inscriptions intently,
+      deciphering the dragon Zog's weaknesses. Orange torchlight
+      flickers across the ancient carvings. She exclaims "I see it
+      now... the way in!" Mysterious archaeological atmosphere,
+      dramatic chiaroscuro lighting.
+    duration_frames: 97
+    camera: push_in
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: "output/bree_the_brave_anchors/shot_006.png"
+
+  - shot_id: 7
+    prompt: >-
+      Epic desert battle. Breanne fights through a gauntlet of Zog's
+      minions — masked marauders and giant serpents — across brutal
+      golden desert sands. She swings her sword with fierce skill,
+      shouting "Get back! He is mine!" Sand swirls around the combat.
+      Dramatic action poses, warm harsh desert sunlight, ancient
+      desert ruins in the background. Cinematic wide shot.
+    duration_frames: 97
+    camera: tracking
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: "output/bree_the_brave_anchors/shot_007.png"
+
+  # ── ACT 4: THE CLIMAX & RESOLUTION ──────────────────────────────────
+
+  - shot_id: 8
+    prompt: >-
+      The final confrontation. The massive dragon Zog rears up on a
+      volcanic rocky plateau, wings spread wide, roaring fire into the
+      sky. Breanne stands before the beast, sword drawn, fearless and
+      defiant. Molten red and orange light from lava below illuminates
+      the scene. Epic scale, the tiny warrior facing the enormous
+      dragon. Zog's fall is imminent. Dramatic cinematic climax,
+      intense fiery atmosphere.
+    duration_frames: 97
+    camera: crane_up
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: "output/bree_the_brave_anchors/shot_008.png"
+
+  - shot_id: 9
+    prompt: >-
+      Breanne the Bold, battle-worn but victorious, cuts through the
+      chains binding Prince Mike inside Zog's dark volcanic lair. He
+      slumps forward and she catches him. Broken shackles and scattered
+      dragon scales litter the stone floor. Faint light pours in from
+      the destroyed cavern entrance behind them. Relief and emotion on
+      both their faces as they reunite. Dramatic rescue lighting,
+      dust and embers floating in the air.
+    duration_frames: 97
+    camera: push_in
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: "output/bree_the_brave_anchors/shot_009.png"
+
+  - shot_id: 10
+    prompt: >-
+      Happily ever after. Breanne the Bold and Prince Mike stand together
+      on a grand castle balcony overlooking a beautiful sunlit kingdom
+      with golden domes and lush gardens. They are dressed in royal
+      wedding attire — she in an elegant gown, he in a royal suit. A
+      "Just Married" banner hangs from the balcony railing. They gaze
+      lovingly at each other. Mike says "I love you, Breanne the Bold."
+      She replies "I love you, my Prince Mike." Golden hour sunset light,
+      joyful celebration, fairy tale ending. THE END.
+    duration_frames: 97
+    camera: pull_out
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: "output/bree_the_brave_anchors/shot_010.png"

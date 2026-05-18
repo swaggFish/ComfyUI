@@ -1,0 +1,50 @@
+title: 'Marketing: A 3-shot high-energy'
+style: comic
+fps: 24
+style_prompt: photorealistic, 8k resolution, cinematic lighting, highly detailed,
+  professional cinematography
+negative_prompt: cartoon, animated, illustration, low quality, deformed, blurry
+output_dir: ./output/story
+shots:
+- shot_id: 1
+  prompt: 'A fast-paced, dramatic shot of a glowing server room with red warning lights, transitioning instantly to cool, stable blue lights. Dynamic lighting, catching the viewer''s attention immediately.'
+  duration_frames: 49
+  camera: pan right
+  transition_in: cut
+  transition_duration: 0.5
+  first_frame_path: null
+  last_frame_path: null
+  seed: 52
+  width: 1280
+  height: 704
+  style_override: null
+  skill: ltx_golden_t2v_v1
+  expected_text: null
+- shot_id: 2
+  prompt: 'Extreme close up of a speedometer graphic maxing out next to the Kinsta logo on a sleek monitor, neon cyberpunk lighting. Shallow depth of field.'
+  duration_frames: 33
+  camera: zoom in
+  transition_in: cut
+  transition_duration: 0.5
+  first_frame_path: null
+  last_frame_path: null
+  seed: 53
+  width: 1280
+  height: 704
+  style_override: null
+  skill: ltx_golden_t2v_v1
+  expected_text: 'Kinsta'
+- shot_id: 3
+  prompt: 'A tech creator looking mind-blown, taking off their glasses in disbelief while holding their phone displaying a 100% performance score. Bright, professional and engaging.'
+  duration_frames: 49
+  camera: static
+  transition_in: cut
+  transition_duration: 0.5
+  first_frame_path: null
+  last_frame_path: null
+  seed: 54
+  width: 1280
+  height: 704
+  style_override: null
+  skill: ltx_golden_t2v_v1
+  expected_text: '100%'

@@ -1,0 +1,616 @@
+{
+  "208": {
+    "inputs": {
+      "filename_prefix": "video/LTX-reasoning",
+      "format": "mp4",
+      "codec": "h264",
+      "video": [
+        "209:122",
+        0
+      ]
+    },
+    "class_type": "SaveVideo",
+    "_meta": {
+      "title": "Save Video"
+    }
+  },
+  "504": {
+    "inputs": {
+      "image": "ComfyUI_00940_.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "520": {
+    "inputs": {
+      "value": "The red ball begins rolling smoothly forward across the floor while slightly accelerating. The motion follows realistic physics with natural rotation and momentum. Cinematic movement, stable camera, realistic lighting and shadows.\n\n"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "red ball rolling"
+    }
+  },
+  "522": {
+    "inputs": {
+      "value": "The woman slowly reaches toward the red ball on the table and gently grabs it with her hand. Her body movement is smooth and natural while maintaining realistic hand interaction and believable motion. Cinematic camera movement, stable composition.\n"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "woman and red ball"
+    }
+  },
+  "523": {
+    "inputs": {
+      "value": "The cue stick strikes the white cue ball forward across the pool table. The cue ball collides with the triangle of billiard balls, causing them to scatter realistically in different directions across the table. Realistic collisions, smooth motion, cinematic physics, stable camera."
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "8 ball pool"
+    }
+  },
+  "524": {
+    "inputs": {
+      "value": "The man slowly walks forward toward the camera with natural body movement and realistic steps. His clothing moves slightly with motion while the cinematic camera remains stable. Realistic human walking animation, smooth motion, believable physics."
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "man"
+    }
+  },
+  "525": {
+    "inputs": {
+      "value": "The man lifts the axe above his shoulders and swings it downward with force, cutting through the piece of wood. Small wood fragments scatter naturally after impact. Realistic body mechanics, believable physics, cinematic motion, stable camera."
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "axe cut"
+    }
+  },
+  "209:216": {
+    "inputs": {
+      "value": 24
+    },
+    "class_type": "PrimitiveFloat",
+    "_meta": {
+      "title": "Frame Rate(float)"
+    }
+  },
+  "209:164": {
+    "inputs": {
+      "sigmas": "1., 0.99375, 0.9875, 0.98125, 0.975, 0.909375, 0.725, 0.421875, 0.0"
+    },
+    "class_type": "ManualSigmas",
+    "_meta": {
+      "title": "ManualSigmas"
+    }
+  },
+  "209:217": {
+    "inputs": {
+      "cfg": 1,
+      "model": [
+        "209:245",
+        0
+      ],
+      "positive": [
+        "209:218",
+        0
+      ],
+      "negative": [
+        "209:218",
+        1
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "CFGGuider"
+    }
+  },
+  "209:218": {
+    "inputs": {
+      "frame_rate": [
+        "209:216",
+        0
+      ],
+      "positive": [
+        "209:225",
+        0
+      ],
+      "negative": [
+        "209:226",
+        0
+      ]
+    },
+    "class_type": "LTXVConditioning",
+    "_meta": {
+      "title": "LTXVConditioning"
+    }
+  },
+  "209:221": {
+    "inputs": {
+      "samples": [
+        "209:240",
+        1
+      ],
+      "audio_vae": [
+        "209:175",
+        0
+      ]
+    },
+    "class_type": "LTXVAudioVAEDecode",
+    "_meta": {
+      "title": "LTXV Audio VAE Decode"
+    }
+  },
+  "209:222": {
+    "inputs": {
+      "sigmas": "0.8025, 0.6332, 0.4525, 0.2425, 0.0"
+    },
+    "class_type": "ManualSigmas",
+    "_meta": {
+      "title": "ManualSigmas"
+    }
+  },
+  "209:223": {
+    "inputs": {
+      "video_latent": [
+        "209:154",
+        0
+      ],
+      "audio_latent": [
+        "209:237",
+        1
+      ]
+    },
+    "class_type": "LTXVConcatAVLatent",
+    "_meta": {
+      "title": "LTXVConcatAVLatent"
+    }
+  },
+  "209:225": {
+    "inputs": {
+      "text": [
+        "523",
+        0
+      ],
+      "clip": [
+        "209:236",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "209:226": {
+    "inputs": {
+      "text": "blurry, low quality, still frame, frames, watermark, overlay, titles, has blurbox, has subtitles",
+      "clip": [
+        "209:236",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "209:229": {
+    "inputs": {
+      "samples": [
+        "209:237",
+        0
+      ],
+      "upscale_model": [
+        "209:233",
+        0
+      ],
+      "vae": [
+        "209:224",
+        0
+      ]
+    },
+    "class_type": "LTXVLatentUpsampler",
+    "_meta": {
+      "title": "spatial"
+    }
+  },
+  "209:230": {
+    "inputs": {
+      "width": 1920,
+      "height": 1058,
+      "batch_size": 1,
+      "color": 0
+    },
+    "class_type": "EmptyImage",
+    "_meta": {
+      "title": "EmptyImage"
+    }
+  },
+  "209:231": {
+    "inputs": {
+      "value": 121
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Length"
+    }
+  },
+  "209:232": {
+    "inputs": {
+      "value": 24
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Frame Rate(int)"
+    }
+  },
+  "209:233": {
+    "inputs": {
+      "model_name": "ltx-2.3-spatial-upscaler-x1.5-1.0.safetensors"
+    },
+    "class_type": "LatentUpscaleModelLoader",
+    "_meta": {
+      "title": "Load Latent Upscale Model"
+    }
+  },
+  "209:234": {
+    "inputs": {
+      "cfg": 1,
+      "model": [
+        "209:244",
+        0
+      ],
+      "positive": [
+        "209:218",
+        0
+      ],
+      "negative": [
+        "209:218",
+        1
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "CFGGuider"
+    }
+  },
+  "209:237": {
+    "inputs": {
+      "av_latent": [
+        "209:197",
+        0
+      ]
+    },
+    "class_type": "LTXVSeparateAVLatent",
+    "_meta": {
+      "title": "LTXVSeparateAVLatent"
+    }
+  },
+  "209:242": {
+    "inputs": {
+      "noise_seed": 17411027294193
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "RandomNoise"
+    }
+  },
+  "209:243": {
+    "inputs": {
+      "noise_seed": 703092295122589
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "RandomNoise"
+    }
+  },
+  "209:154": {
+    "inputs": {
+      "strength": 0.8,
+      "bypass": false,
+      "vae": [
+        "209:224",
+        0
+      ],
+      "image": [
+        "209:152",
+        0
+      ],
+      "latent": [
+        "209:199",
+        0
+      ]
+    },
+    "class_type": "LTXVImgToVideoInplace",
+    "_meta": {
+      "title": "LTXVImgToVideoInplace"
+    }
+  },
+  "209:248": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "scale_by": 0.5,
+      "image": [
+        "209:230",
+        0
+      ]
+    },
+    "class_type": "ImageScaleBy",
+    "_meta": {
+      "title": "Upscale Image By"
+    }
+  },
+  "209:249": {
+    "inputs": {
+      "strength": 0.8,
+      "bypass": false,
+      "vae": [
+        "209:224",
+        0
+      ],
+      "image": [
+        "209:152",
+        0
+      ],
+      "latent": [
+        "209:251",
+        0
+      ]
+    },
+    "class_type": "LTXVImgToVideoInplace",
+    "_meta": {
+      "title": "LTXVImgToVideoInplace"
+    }
+  },
+  "209:250": {
+    "inputs": {
+      "video_latent": [
+        "209:249",
+        0
+      ],
+      "audio_latent": [
+        "209:171",
+        0
+      ]
+    },
+    "class_type": "LTXVConcatAVLatent",
+    "_meta": {
+      "title": "LTXVConcatAVLatent"
+    }
+  },
+  "209:251": {
+    "inputs": {
+      "width": [
+        "209:252",
+        0
+      ],
+      "height": [
+        "209:252",
+        1
+      ],
+      "length": [
+        "209:231",
+        0
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyLTXVLatentVideo",
+    "_meta": {
+      "title": "EmptyLTXVLatentVideo"
+    }
+  },
+  "209:252": {
+    "inputs": {
+      "image": [
+        "209:248",
+        0
+      ]
+    },
+    "class_type": "GetImageSize",
+    "_meta": {
+      "title": "Get Image Size"
+    }
+  },
+  "209:171": {
+    "inputs": {
+      "frames_number": [
+        "209:231",
+        0
+      ],
+      "frame_rate": [
+        "209:232",
+        0
+      ],
+      "batch_size": 1,
+      "audio_vae": [
+        "209:175",
+        0
+      ]
+    },
+    "class_type": "LTXVEmptyLatentAudio",
+    "_meta": {
+      "title": "LTXV Empty Latent Audio"
+    }
+  },
+  "209:235": {
+    "inputs": {
+      "clip_name1": "gemma_3_12B_it_fp4_mixed.safetensors",
+      "clip_name2": "ltx-2.3_text_projection_bf16.safetensors",
+      "type": "ltxv",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "209:240": {
+    "inputs": {
+      "av_latent": [
+        "209:241",
+        0
+      ]
+    },
+    "class_type": "LTXVSeparateAVLatent",
+    "_meta": {
+      "title": "LTXVSeparateAVLatent"
+    }
+  },
+  "209:228": {
+    "inputs": {
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 2048,
+      "temporal_overlap": 8,
+      "samples": [
+        "209:240",
+        0
+      ],
+      "vae": [
+        "209:224",
+        0
+      ]
+    },
+    "class_type": "VAEDecodeTiled",
+    "_meta": {
+      "title": "VAE Decode (Tiled)"
+    }
+  },
+  "209:122": {
+    "inputs": {
+      "fps": [
+        "209:216",
+        0
+      ],
+      "images": [
+        "209:502",
+        0
+      ],
+      "audio": [
+        "209:221",
+        0
+      ]
+    },
+    "class_type": "CreateVideo",
+    "_meta": {
+      "title": "Create Video"
+    }
+  },
+  "209:172": {
+    "inputs": {
+      "noise": [
+        "209:243",
+        0
+      ],
+      "guider": [
+        "209:217",
+        0
+      ],
+      "sampler": [
+        "209:220",
+        0
+      ],
+      "sigmas": [
+        "209:164",
+        0
+      ],
+      "latent_image": [
+        "209:238",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "1st SamplerCustomAdvanced"
+    }
+  },
+  "209:247": {
+    "inputs": {
+      "noise": [
+        "209:242",
+        0
+      ],
+      "guider": [
+        "209:234",
+        0
+      ],
+      "sampler": [
+        "209:219",
+        0
+      ],
+      "sigmas": [
+        "209:222",
+        0
+      ],
+      "latent_image": [
+        "209:239",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "2nd SamplerCustomAdvanced"
+    }
+  },
+  "209:151": {
+    "inputs": {
+      "longer_edge": 1024,
+      "images": [
+        "504",
+        0
+      ]
+    },
+    "class_type": "ResizeImagesByLongerEdge",
+    "_meta": {
+      "title": "Resize Images by Longer Edge"
+    }
+  },
+  "209:152": {
+    "inputs": {
+      "img_compression": 0,
+      "image": [
+        "209:151",
+        0
+      ]
+    },
+    "class_type": "LTXVPreprocess",
+    "_meta": {
+      "title": "LTXVPreprocess"
+    }
+  },
+  "209:246": {
+    "inputs": {
+      "lora_name": "Ltx2.3-Licon-VBVR-I2V-390K-R32.safetensors",
+      "strength_model": 1,
+      "model": [
+        "209:227",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "Distilled LoRA"
+    }
+  },
+  "209:219": {
+    "inputs": {
+      "sampler_name": "euler_ancestral"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "209:220": {
+    "inputs": {
+      "sampler_name": "euler_ancestral"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  }
+}

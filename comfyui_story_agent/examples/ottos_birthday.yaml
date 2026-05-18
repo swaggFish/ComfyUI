@@ -1,0 +1,200 @@
+# ══════════════════════════════════════════════════════════════════════
+# Otto's Birthday — A Midwestern Pioneer Tribute
+# ══════════════════════════════════════════════════════════════════════
+# Runtime: ~23 seconds (6 shots × 97 frames × 25fps)
+# Pipeline: flf2v_cinematic (FLF2V First/Last Frame to Video)
+# Resolution: 1024×576 (16:9)
+# Setting: Des Moines, Iowa — Rural Farm Life, circa 1928–1931
+# Dedication: "A debt of gratitude to my Otto, a true Midwestern
+#   pioneer. With love, Mikalina"
+# ══════════════════════════════════════════════════════════════════════
+
+title: "Otto's Birthday: A Midwestern Love Story"
+style: american_gothic
+fps: 25
+style_prompt: "vintage sepia-toned photograph style, 1930s American rural Midwest, Grant Wood American Gothic aesthetic, warm antique parchment tones, aged photograph texture, soft vignette edges, Depression-era Americana, documentary realism, warm golden brown monochrome, period-accurate clothing and settings, Iowa farmland"
+negative_prompt: "modern clothing, color photography, digital look, neon, futuristic, cartoon, anime, CGI, urban cityscape, contemporary architecture, smartphones, plastic"
+output_dir: "output/ottos_birthday"
+
+# ── Character Bible ──────────────────────────────────────────────────
+# Otto: Stocky Midwestern farmer, dark brown hair, rectangular
+#   glasses, goatee/short beard, wearing blue denim overalls under
+#   a dark navy blazer with white shirt. Slight smirk. A kind,
+#   hardworking man devoted to his farm and family.
+# Mikalina: Otto's devoted wife, bald/shaved head, clean-shaven
+#   face, stern squinting expression, wearing a brown prairie dress
+#   with white lace collar trim over a black long-sleeve shirt.
+#   Strong prairie woman, skilled homemaker and canner.
+# Setting: Rural Des Moines, Iowa — golden wheat fields, wooden
+#   farmhouse, dirt roads, small-town Main Street with Herriman
+#   General Store, community tent gatherings, front porch evenings.
+# ─────────────────────────────────────────────────────────────────────
+
+shots:
+  # ── SCENE 1: THRESHING DAY, 1928 ────────────────────────────────────
+  # The community comes together for the annual threshing. Otto stands
+  # proud among his fellow farmers, golden wheat bales stacked high,
+  # the mechanical thresher rumbling in the Iowa summer heat.
+
+  - shot_id: 1
+    prompt: >-
+      Sepia-toned vintage photograph, Threshing Day 1928 in rural
+      Des Moines Iowa. Otto, a sturdy farmer with dark brown hair, round glasses
+      and suspenders, stands proudly with a group of farmhands beside
+      a mechanical threshing machine. Golden wheat bales are stacked
+      high around them. Mikalina, his wife in a modest prairie dress
+      and apron, stands among the women who have brought lunch baskets.
+      A Model-T truck is parked nearby. Bright summer sun, dust motes
+      in the air, rolling Iowa farmland stretching to the horizon.
+      The community works together in the harvest heat. Otto wipes
+      his brow and smiles. Warm sepia documentary photography style.
+    duration_frames: 97
+    camera: pan_right
+    transition_in: cut
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: "output/ottos_birthday_anchors/shot_001.png"
+
+  # ── SCENE 2: A GRATITUDE HARVEST — OTTO'S COMMENDATION, 1930 ──────
+  # The community gathers under a white tent to honor Otto for his
+  # contributions to the local farming cooperative. Tables are laden
+  # with harvest bounty. It is a surprise birthday celebration.
+
+  - shot_id: 2
+    prompt: >-
+      Sepia-toned vintage photograph, A Gratitude Harvest celebration
+      1930 in rural Des Moines Iowa. Under a large white canvas tent,
+      a long wooden table is set with wildflower arrangements, freshly
+      baked pies, canned preserves, and platters of farm food. The
+      community has gathered to honor Otto on his birthday. Otto, a
+      man with dark brown hair and round glasses in his Sunday best white shirt,
+      stands humbly as a town elder shakes his hand and presents a
+      commendation. Mikalina beams with pride beside him. Neighbors
+      and farming families applaud. Warm golden light filters through
+      the tent canvas. A hand-painted banner reads "Otto's Commendation."
+      Heartfelt small-town celebration, sepia documentary style.
+    duration_frames: 97
+    camera: push_in
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: "output/ottos_birthday_anchors/shot_002.png"
+
+  # ── SCENE 3: MIKALINA'S CANNING SEASON ─────────────────────────────
+  # Inside their warm farmhouse kitchen, Mikalina works her annual
+  # canning magic — preserving the summer bounty of tomatoes, beans,
+  # pickles, and fruit for the long Iowa winter ahead.
+
+  - shot_id: 3
+    prompt: >-
+      Sepia-toned vintage photograph, Mikalina's Canning Season inside
+      a 1930s Iowa farmhouse kitchen. Mikalina, a capable woman with
+      bald/shaved head wearing a cotton housedress and apron,
+      stands at a large wood-burning stove stirring a steaming pot.
+      The kitchen table and counters are covered with mason jars filled
+      with colorful preserves — tomatoes, green beans, pickled cucumbers,
+      apple butter. Bushels of fresh vegetables and fruits from the
+      garden surround her. Outside the window, pumpkins line the
+      farmhouse porch and the autumn harvest is visible. Steam rises
+      from the kettles. Warm kitchen light, the pride of a self-sufficient
+      homestead. She hums contentedly, preparing birthday preserves
+      for Otto. Intimate domestic scene, sepia documentary style.
+    duration_frames: 97
+    camera: static
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: "output/ottos_birthday_anchors/shot_003.png"
+
+  # ── SCENE 4: HERRIMAN GENERAL STORE SUPPORT, 1930 ──────────────────
+  # The Herriman General Store on Main Street proudly displays a sign
+  # reading "Supporter of Otto's Farm." The small town rallies behind
+  # their hardworking neighbor.
+
+  - shot_id: 4
+    prompt: >-
+      Sepia-toned vintage photograph, the Herriman General Store on
+      Main Street in a small Iowa town near Des Moines, 1930. A
+      handsome two-story brick storefront with a large painted sign
+      reading "HERRIMAN GENERAL STORE" and a banner beneath reading
+      "SUPPORTER OF OTTO'S FARM." A Model-A Ford is parked on the
+      dusty Main Street. Townspeople in period clothing walk along
+      the wooden sidewalk. A farmer unloads crates of produce from
+      Otto's farm at the store entrance. The small-town American Main
+      Street stretches into the distance with other storefronts. Warm
+      afternoon light, shadows of telephone poles on the dirt road.
+      A testament to community support and local commerce. Classic
+      small-town Americana, sepia documentary style.
+    duration_frames: 97
+    camera: pan_right
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: "output/ottos_birthday_anchors/shot_004.png"
+
+  # ── SCENE 5: THE BIRTHDAY GIFT — AMERICAN GOTHIC PORTRAIT ─────────
+  # Mikalina surprises Otto with a special birthday portrait. They
+  # stand together in the iconic American Gothic pose — Otto holding
+  # a pitchfork, Mikalina at his side — in front of their beloved
+  # Iowa farmhouse. A moment frozen in time.
+
+  - shot_id: 5
+    prompt: >-
+      Sepia-toned vintage photograph in the style of Grant Wood's
+      American Gothic painting. Otto and Mikalina stand side-by-side
+      in front of their white Iowa farmhouse with a Gothic window.
+      Otto, a sturdy man with dark brown hair and round glasses, holds a three-pronged
+      pitchfork upright. He wears suspenders over a white collarless
+      shirt. Mikalina stands beside him in a modest dark prairie dress
+      with a cameo brooch. Both gaze directly at the camera with
+      stoic, dignified Midwestern expressions. Their posture is proud
+      and upright. Behind them, the farmhouse and rolling Iowa fields.
+      Classic American Gothic composition, warm sepia tones, oval
+      portrait vignette framing. A birthday portrait for the ages.
+      1930s Iowa documentary style.
+    duration_frames: 97
+    camera: push_in
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: "output/ottos_birthday_anchors/shot_005.png"
+
+  # ── SCENE 6: A SHARED PEACE, 1931 ──────────────────────────────────
+  # Evening falls on the farm. Otto and Mikalina sit together on
+  # their front porch, the pitchfork leaning against the rail, a
+  # radio playing softly inside. They watch the Iowa sunset paint
+  # the fields gold. A life well-lived, together.
+
+  - shot_id: 6
+    prompt: >-
+      Sepia-toned vintage photograph, A Shared Peace 1931. Otto and
+      Mikalina sit together on the wooden front porch of their Iowa
+      farmhouse in the soft golden light of evening. Otto with dark brown hair and
+      round glasses, leans back in a rocking chair. Mikalina sits
+      beside him, her hand resting on his. A pitchfork leans against
+      the porch railing. A vintage radio sits on a small table between
+      them. The vast Iowa prairie stretches before them, wheat fields
+      glowing amber in the setting sun. Fireflies begin to appear.
+      Their faces are peaceful, content — a lifetime of hard work and
+      love reflected in their quiet companionship. A gentle birthday
+      evening, the reward of a life built together on the land.
+      Otto whispers, "Thank you, Mikalina." She replies, "Happy
+      birthday, my dear Otto." Warm, intimate, sepia documentary style.
+      THE END.
+    duration_frames: 97
+    camera: pull_out
+    transition_in: crossfade
+    transition_duration: 1.0
+    seed: -1
+    width: 1024
+    height: 576
+    first_frame_path: "output/ottos_birthday_anchors/shot_006.png"

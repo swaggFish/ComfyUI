@@ -37,6 +37,7 @@ from .frame_utils import (
 from .skills import SkillManager
 from .validator import Critic
 from .director import Director
+from .text_agent import TextDirector
 
 logger = logging.getLogger(__name__)
 
@@ -112,9 +113,14 @@ class SequenceEngine:
         director_key = gemini_api_key or os.environ.get("GEMINI_API_KEY", "")
         if enable_director:
             self.director = Director(
-                api_key=director_key if director_key else None,
+                api_key=gemini_api_key,
                 max_retries=director_max_retries,
-                evidence_dir=str(self.output_dir / "_director_evidence"),
+                evidence_dir=os.path.join(output_dir, "evidence")
+            )
+            self.text_director = TextDirector(
+                api_key=gemini_api_key,
+                max_retries=director_max_retries,
+                evidence_dir=os.path.join(output_dir, "evidence_text")
             )
             logger.info(
                 f"Director Agent ENABLED (max_retries={director_max_retries})"
@@ -249,6 +255,18 @@ class SequenceEngine:
                 prompt=shot.prompt,
                 shot_id=shot.shot_id,
             )
+            
+            text_evaluation = None
+            if hasattr(shot, 'expected_text') and shot.expected_text:
+                text_evaluation = self.text_director.review_clip(
+                    clip_path=result.video_path,
+                    expected_text=shot.expected_text,
+                    shot_id=shot.shot_id,
+                )
+                if not text_evaluation.passed:
+                    evaluation.passed = False  # Fail the main evaluation if text fails
+                    evaluation.recommended_action = text_evaluation.recommended_action
+                    evaluation.summary = f"TextDirector failed: {text_evaluation.summary} | " + evaluation.summary
 
             # Store evaluation in result metadata
             result.metadata["director_evaluation"] = {
@@ -303,7 +321,7 @@ class SequenceEngine:
         - If no frames → T2V
         """
         # Determine the style and compose the prompt
-        style = "comic"  # Default style
+        style = storyboard.style if storyboard else "comic"
         style_prompt = ""
         negative = ""
 

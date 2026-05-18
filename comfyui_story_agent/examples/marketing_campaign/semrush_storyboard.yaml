@@ -1,0 +1,50 @@
+title: 'Marketing: A 3-shot professiona'
+style: comic
+fps: 24
+style_prompt: photorealistic, 8k resolution, cinematic lighting, highly detailed,
+  professional cinematography
+negative_prompt: cartoon, animated, illustration, low quality, deformed, blurry
+output_dir: ./output/story
+shots:
+- shot_id: 1
+  prompt: 'Cinematic wide establishing shot of a sleek laptop screen showing massive traffic growth charts, professional office lighting. Dynamic lighting, catching the viewer''s attention immediately.'
+  duration_frames: 49
+  camera: pan right
+  transition_in: cut
+  transition_duration: 0.5
+  first_frame_path: null
+  last_frame_path: null
+  seed: 42
+  width: 1280
+  height: 704
+  style_override: null
+  skill: ltx_golden_t2v_v1
+  expected_text: 'SEMRUSH Traffic Growth +250%'
+- shot_id: 2
+  prompt: 'Extreme close-up of hands typing rapidly on a backlit keyboard while a floating AR projection of the Semrush keyword dashboard appears in focus. Shallow depth of field.'
+  duration_frames: 33
+  camera: zoom in
+  transition_in: cut
+  transition_duration: 0.5
+  first_frame_path: null
+  last_frame_path: null
+  seed: 43
+  width: 1280
+  height: 704
+  style_override: null
+  skill: ltx_golden_t2v_v1
+  expected_text: 'KEYWORD OVERVIEW Volume: 14,000'
+- shot_id: 3
+  prompt: 'A confident, well-dressed professional smiling directly at the camera in a modern co-working space, pointing to a Call-To-Action overlay. Bright, professional and engaging.'
+  duration_frames: 49
+  camera: static
+  transition_in: cut
+  transition_duration: 0.5
+  first_frame_path: null
+  last_frame_path: null
+  seed: 44
+  width: 1280
+  height: 704
+  style_override: null
+  skill: ltx_golden_t2v_v1
+  expected_text: 'Start Your Free Trial Today!'

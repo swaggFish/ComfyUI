@@ -43,6 +43,7 @@ class Shot:
     height: int = DEFAULT_HEIGHT
     style_override: Optional[str] = None  # Override global style
     skill: Optional[str] = None  # Use a custom ComfyUI skill (JSON workflow)
+    expected_text: Optional[str] = None  # Text that MUST appear legibly in the shot
 
     def validate(self) -> list[str]:
         """Validate this shot's parameters. Returns list of error strings."""
@@ -105,6 +106,7 @@ class StoryBoard:
     """A complete sequence of shots telling a story."""
 
     title: str = "Untitled Story"
+    style: str = "comic"  # Global style name (watercolor, anime, etc.)
     shots: list[Shot] = field(default_factory=list)
     fps: int = DEFAULT_FPS
     style_prompt: str = ""  # Global style prefix for all shots
@@ -150,6 +152,7 @@ class StoryBoard:
             raise ImportError("PyYAML required: pip install pyyaml")
         data = {
             "title": self.title,
+            "style": self.style,
             "fps": self.fps,
             "style_prompt": self.style_prompt,
             "negative_prompt": self.negative_prompt,
@@ -171,6 +174,7 @@ class StoryBoard:
         shots = [Shot.from_dict(s) for s in data.get("shots", [])]
         return cls(
             title=data.get("title", "Untitled"),
+            style=data.get("style", "comic"),
             shots=shots,
             fps=data.get("fps", DEFAULT_FPS),
             style_prompt=data.get("style_prompt", ""),
@@ -234,6 +238,7 @@ class StoryBoard:
 
         return cls(
             title=metadata.get("title", "Untitled"),
+            style=metadata.get("style", "comic"),
             shots=shots,
             fps=int(metadata.get("fps", DEFAULT_FPS)),
             style_prompt=metadata.get("style_prompt", ""),

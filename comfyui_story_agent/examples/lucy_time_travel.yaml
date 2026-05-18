@@ -1,45 +1,34 @@
 # ══════════════════════════════════════════════════════════════════════
-# Lucy's Time-Traveling Adventures — Full Storyboard
+# Lucy's Time-Traveling Adventures — Watercolor Reshoot
 # ══════════════════════════════════════════════════════════════════════
-# Runtime: ~30 seconds (6 shots × 97 frames × 25fps)
-# Pipeline: flf2v_cinematic
-# Resolution: 1024×576 (16:9)
+# Style: Watercolor (Dreamlike, soft edges, paper texture)
+# Anchors: Provided JPGs mapped to 6 shots
 # ══════════════════════════════════════════════════════════════════════
 
-title: "Lucy's Time-Traveling Adventures"
-style: comic
+title: "Lucy's Time-Traveling Adventures (Watercolor)"
+style: watercolor
 fps: 25
+output_dir: "output/lucy_watercolor"
 
-# ── Character Bible ──────────────────────────────────────────────────
-# Lucy: ~5-year-old girl, blonde hair, big smile
-# The Minnie Mobile: Bright pink power wheels car with white polka dots
-# Time Portal: Swirling pink and gold sparkle vortex
-# ─────────────────────────────────────────────────────────────────────
-c
 shots:
   - shot_id: 1
     prompt: >-
-      Lucy, a cute blonde girl around 5 years old in a grey hoodie,
-      drives her bright pink Minnie Mouse power wheels car with white
-      polka dots into a swirling magical time portal made of glowing
-      pink and gold light. Sparkles and stars surround the portal.
-      Suburban neighborhood background. Golden hour lighting. Magical.
+      Watercolor animation style. Lucy, a cute blonde girl around 5 years old,
+      happily eating a large swirl ice cream cone in front of a retro diner/store.
+      Soft edges, translucent color washes, paper texture visible. 
     duration_frames: 97
     camera: push_in
     transition_in: cut
     seed: -1
     width: 1024
     height: 576
-    first_frame_path: input/lucy_shot1_start.png
-    last_frame_path: input/lucy_shot1_end.png
+    first_frame_path: "output/lucy_watercolor_anchors/shot_001.jpg"
 
   - shot_id: 2
     prompt: >-
-      Lucy's bright pink Minnie Mouse power wheels car bursts out of
-      a swirling time portal onto a dusty frontier trail in the
-      American old west 1840s. Pioneer town with log cabins, saloon,
-      and covered wagons. Lucy wears a pink bonnet and peach pioneer
-      dress. She waves at friendly cowboys and horses. Golden prairie.
+      Watercolor animation style. Lucy wears a pink pioneer bonnet and dress.
+      She is sitting in a sunlit prairie meadow in the American old west,
+      waving at friendly horses. Dreamlike, soft brush strokes.
     duration_frames: 97
     camera: tracking
     transition_in: crossfade
@@ -47,50 +36,41 @@ shots:
     seed: -1
     width: 1024
     height: 576
-    first_frame_path: input/lucy_shot2_start.png
-    last_frame_path: input/lucy_shot2_end.png
+    first_frame_path: "output/lucy_watercolor_anchors/shot_002.jpg"
 
   - shot_id: 3
     prompt: >-
-      A magical time portal opens in the pioneer meadow. Lucy walks
-      toward it in her peach pioneer bonnet and dress, waving goodbye
-      to the horses. The portal swirls with pink and rainbow colors
-      as she steps through into a grand theater with spotlights.
-      Transition from golden prairie to stage lighting.
+      Watercolor animation style. Lucy in a magical playroom/rehearsal space,
+      hanging upside down from a colorful fabric swing. A giant rainbow cloud
+      is painted on the ceiling. Soft flowing paint effects.
     duration_frames: 97
-    camera: push_in
+    camera: static
     transition_in: crossfade
     transition_duration: 1.0
     seed: -1
     width: 1024
     height: 576
-    first_frame_path: input/lucy_shot3_start.png
-    last_frame_path: input/lucy_shot3_end.png
+    first_frame_path: "output/lucy_watercolor_anchors/shot_003.jpg"
 
   - shot_id: 4
     prompt: >-
-      Lucy performs an amazing dance on a grand theater stage. She
-      wears a sparkly pink leotard and rainbow tutu. Spotlights and
-      stage lights create a rainbow glow. The audience cheers. She
-      does graceful twirls and leaps with one hand above her head.
-      Magical sparkles trail behind her movements. Joyful energy.
+      Watercolor animation style. Lucy performing a dance on a theater stage.
+      She wears a sparkly pink leotard and rainbow tutu. Spotlights create
+      glowing color washes. Artistic and dreamlike.
     duration_frames: 97
-    camera: orbit
+    camera: orbit_cw
     transition_in: crossfade
     transition_duration: 1.0
     seed: -1
     width: 1024
     height: 576
-    first_frame_path: input/lucy_shot4_start.png
-    last_frame_path: input/lucy_shot4_end.png
+    first_frame_path: "output/lucy_watercolor_anchors/shot_004.jpg"
 
   - shot_id: 5
     prompt: >-
-      Lucy sits on dramatic red sandstone rocks in a Utah canyon.
-      She wears a pink striped shirt and jeans. Massive natural
-      arches tower above. She discovers a glowing crystal embedded
-      in the rock. Desert sunlight illuminates the canyon walls in
-      warm golden light. Sense of wonder and adventure.
+      Watercolor animation style. Lucy sits on dramatic red sandstone rocks
+      in a Utah canyon. Warm desert sunlight, soft edges, paper texture.
+      Natural arches tower above her.
     duration_frames: 97
     camera: crane_up
     transition_in: crossfade
@@ -98,22 +78,18 @@ shots:
     seed: -1
     width: 1024
     height: 576
-    first_frame_path: input/lucy_shot5_start.png
-    last_frame_path: input/lucy_shot5_end.png
+    first_frame_path: "output/lucy_watercolor_anchors/shot_005.jpg"
 
   - shot_id: 6
     prompt: >-
-      Lucy drives her pink Minnie Mouse power wheels car out of a
-      fading time portal, arriving back in her suburban neighborhood
-      at sunset. She waves happily. Pink sparkles dissolve behind
-      her. The sky glows golden and orange. Her family watches from
-      the porch, smiling. Warm, happy homecoming. The end.
+      Watercolor animation style. Lucy arriving back home at sunset.
+      She waves happily, her ice cream cone from the start is back.
+      Golden hour lighting, soft flowing paint effects. The end.
     duration_frames: 97
-    camera: crane_up
+    camera: pull_out
     transition_in: crossfade
     transition_duration: 1.0
     seed: -1
     width: 1024
     height: 576
-    first_frame_path: input/lucy_shot6_start.png
-    last_frame_path: input/lucy_shot6_end.png
+    first_frame_path: "output/lucy_watercolor_anchors/shot_006.jpg"

@@ -113,14 +113,8 @@ class Critic:
           - Broken connections (node refs pointing to non-existent nodes)
           - VRAM-unsafe resolutions
         """
-        # 1. Check for critical node types
-        required_classes = ["KSamplerSelect", "CheckpointLoaderSimple", "VAEDecodeTiled"]
+        # 1. Check for critical node types (Disabled to support custom cloud API nodes like Kling)
         found_classes = [node.get("class_type") for node in workflow.values()]
-
-        for req in required_classes:
-            if req not in found_classes:
-                logger.error(f"Critic Error: Missing required node type '{req}'")
-                return False
 
         # 2. Check for dangerous hyperparams inside the JSON
         for node_id, node in workflow.items():
