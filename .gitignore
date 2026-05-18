@@ -23,3 +23,7 @@ web_custom_versions/
 .DS_Store
 filtered-openapi.yaml
 uv.lock
+
+# Ignore marketing agent generated output directories and video files
+comfyui_story_agent/examples/marketing_campaign/*_output*/
+*.mp4
