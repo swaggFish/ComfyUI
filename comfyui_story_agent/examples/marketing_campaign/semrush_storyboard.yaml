@@ -7,44 +7,65 @@ negative_prompt: cartoon, animated, illustration, low quality, deformed, blurry
 output_dir: ./output/story
 shots:
 - shot_id: 1
-  prompt: 'Cinematic wide establishing shot of a sleek laptop screen showing massive traffic growth charts, professional office lighting. Dynamic lighting, catching the viewer''s attention immediately.'
+  prompt: 'Cinematic wide establishing shot of A 3-shot professional marketing video
+    for Semrush. Shot 1: A dynamic, high-contrast shot of a sleek laptop screen showing
+    massive traffic growth charts, professional office lighting. Shot 2: Close-up
+    of hands typing rapidly on a backlit keyboard while a floating AR projection of
+    the Semrush keyword dashboard appears in focus. Shot 3: A confident, well-dressed
+    professional smiling directly at the camera in a modern co-working space, pointing
+    to a Call-To-Action overlay., dynamic lighting, catching the viewer''s attention
+    immediately.'
   duration_frames: 49
   camera: pan right
   transition_in: cut
   transition_duration: 0.5
   first_frame_path: null
   last_frame_path: null
-  seed: 42
+  seed: -1
   width: 1280
   height: 704
   style_override: null
-  skill: ltx_golden_t2v_v1
-  expected_text: 'SEMRUSH Traffic Growth +250%'
+  skill: null
+  expected_text: null
 - shot_id: 2
-  prompt: 'Extreme close-up of hands typing rapidly on a backlit keyboard while a floating AR projection of the Semrush keyword dashboard appears in focus. Shallow depth of field.'
+  prompt: 'Extreme close up of A 3-shot professional marketing video for Semrush.
+    Shot 1: A dynamic, high-contrast shot of a sleek laptop screen showing massive
+    traffic growth charts, professional office lighting. Shot 2: Close-up of hands
+    typing rapidly on a backlit keyboard while a floating AR projection of the Semrush
+    keyword dashboard appears in focus. Shot 3: A confident, well-dressed professional
+    smiling directly at the camera in a modern co-working space, pointing to a Call-To-Action
+    overlay. detailing its high-quality material and core functionality, shallow depth
+    of field.'
   duration_frames: 33
   camera: zoom in
   transition_in: cut
   transition_duration: 0.5
   first_frame_path: null
   last_frame_path: null
-  seed: 43
+  seed: -1
   width: 1280
   height: 704
   style_override: null
-  skill: ltx_golden_t2v_v1
-  expected_text: 'KEYWORD OVERVIEW Volume: 14,000'
+  skill: null
+  expected_text: null
 - shot_id: 3
-  prompt: 'A confident, well-dressed professional smiling directly at the camera in a modern co-working space, pointing to a Call-To-Action overlay. Bright, professional and engaging.'
+  prompt: 'Dynamic shot of A 3-shot professional marketing video for Semrush. Shot
+    1: A dynamic, high-contrast shot of a sleek laptop screen showing massive traffic
+    growth charts, professional office lighting. Shot 2: Close-up of hands typing
+    rapidly on a backlit keyboard while a floating AR projection of the Semrush keyword
+    dashboard appears in focus. Shot 3: A confident, well-dressed professional smiling
+    directly at the camera in a modern co-working space, pointing to a Call-To-Action
+    overlay. in action displaying its value to the user, bright, professional and
+    engaging.'
   duration_frames: 49
   camera: static
   transition_in: cut
   transition_duration: 0.5
   first_frame_path: null
   last_frame_path: null
-  seed: 44
+  seed: -1
   width: 1280
   height: 704
   style_override: null
-  skill: ltx_golden_t2v_v1
-  expected_text: 'Start Your Free Trial Today!'
+  skill: null
+  expected_text: null

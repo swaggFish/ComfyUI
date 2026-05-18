@@ -7,44 +7,64 @@ negative_prompt: cartoon, animated, illustration, low quality, deformed, blurry
 output_dir: ./output/story
 shots:
 - shot_id: 1
-  prompt: 'A fast-paced, dramatic shot of a glowing server room with red warning lights, transitioning instantly to cool, stable blue lights. Dynamic lighting, catching the viewer''s attention immediately.'
+  prompt: 'Cinematic wide establishing shot of A 3-shot high-energy marketing video
+    for Kinsta Cloud Hosting. Shot 1: A fast-paced, dramatic shot of a glowing server
+    room with red warning lights, transitioning instantly to cool, stable blue lights.
+    Shot 2: Extreme close up of a speedometer graphic maxing out next to the Kinsta
+    logo on a sleek monitor, neon cyberpunk lighting. Shot 3: A tech creator looking
+    mind-blown, taking off their glasses in disbelief while holding their phone displaying
+    a 100% performance score., dynamic lighting, catching the viewer''s attention
+    immediately.'
   duration_frames: 49
   camera: pan right
   transition_in: cut
   transition_duration: 0.5
   first_frame_path: null
   last_frame_path: null
-  seed: 52
+  seed: -1
   width: 1280
   height: 704
   style_override: null
-  skill: ltx_golden_t2v_v1
+  skill: null
   expected_text: null
 - shot_id: 2
-  prompt: 'Extreme close up of a speedometer graphic maxing out next to the Kinsta logo on a sleek monitor, neon cyberpunk lighting. Shallow depth of field.'
+  prompt: 'Extreme close up of A 3-shot high-energy marketing video for Kinsta Cloud
+    Hosting. Shot 1: A fast-paced, dramatic shot of a glowing server room with red
+    warning lights, transitioning instantly to cool, stable blue lights. Shot 2: Extreme
+    close up of a speedometer graphic maxing out next to the Kinsta logo on a sleek
+    monitor, neon cyberpunk lighting. Shot 3: A tech creator looking mind-blown, taking
+    off their glasses in disbelief while holding their phone displaying a 100% performance
+    score. detailing its high-quality material and core functionality, shallow depth
+    of field.'
   duration_frames: 33
   camera: zoom in
   transition_in: cut
   transition_duration: 0.5
   first_frame_path: null
   last_frame_path: null
-  seed: 53
+  seed: -1
   width: 1280
   height: 704
   style_override: null
-  skill: ltx_golden_t2v_v1
-  expected_text: 'Kinsta'
+  skill: null
+  expected_text: null
 - shot_id: 3
-  prompt: 'A tech creator looking mind-blown, taking off their glasses in disbelief while holding their phone displaying a 100% performance score. Bright, professional and engaging.'
+  prompt: 'Dynamic shot of A 3-shot high-energy marketing video for Kinsta Cloud Hosting.
+    Shot 1: A fast-paced, dramatic shot of a glowing server room with red warning
+    lights, transitioning instantly to cool, stable blue lights. Shot 2: Extreme close
+    up of a speedometer graphic maxing out next to the Kinsta logo on a sleek monitor,
+    neon cyberpunk lighting. Shot 3: A tech creator looking mind-blown, taking off
+    their glasses in disbelief while holding their phone displaying a 100% performance
+    score. in action displaying its value to the user, bright, professional and engaging.'
   duration_frames: 49
   camera: static
   transition_in: cut
   transition_duration: 0.5
   first_frame_path: null
   last_frame_path: null
-  seed: 54
+  seed: -1
   width: 1280
   height: 704
   style_override: null
-  skill: ltx_golden_t2v_v1
-  expected_text: '100%'
+  skill: null
+  expected_text: null
