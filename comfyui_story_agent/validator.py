@@ -47,6 +47,16 @@ _FALLBACK_ENVELOPES = {
     "length": {"min": 1, "max": 97},
 }
 
+# When generating at low fps (≤8) for RIFE interpolation, allow more frames
+# since the motion content per-frame is lower and VRAM usage is similar.
+_RIFE_ENVELOPES = {
+    "cfg": {"min": 1.0, "max": 6.0},
+    "steps": {"min": 10, "max": 50},
+    "width": {"min": 256, "max": 1024},
+    "height": {"min": 256, "max": 1024},
+    "length": {"min": 1, "max": 121},  # +24 frames headroom at 8fps
+}
+
 
 class Critic:
     """The 'Critic' agent responsible for pre-flight workflow validation.
@@ -61,12 +71,15 @@ class Critic:
     def validate_inputs(
         inputs: Dict[str, Any],
         pipeline: str = "flf2v_cinematic",
+        source_fps: int = 24,
     ) -> Dict[str, Any]:
         """Validate and clamp inputs to safe 'Parameter Envelopes'.
 
         Args:
             inputs: Dict of generation parameters (cfg, width, height, etc.)
             pipeline: Which pipeline envelope to use (e.g., 'flf2v_cinematic')
+            source_fps: Storyboard fps. When ≤8, the RIFE envelope is used
+                        (allowing up to 121 frames for low-fps RIFE generation).
 
         Returns:
             Dict with all parameters clamped to the envelope boundaries.
@@ -74,8 +87,13 @@ class Critic:
         validated = inputs.copy()
         config = _load_envelopes()
 
+        # Use RIFE-extended envelopes when generating at low fps
+        base_envelopes = _RIFE_ENVELOPES if source_fps <= 8 else _FALLBACK_ENVELOPES
+        if source_fps <= 8:
+            logger.info("Critic: Using RIFE envelope (121-frame cap) for low-fps pipeline.")
+
         # Try to load pipeline-specific envelopes
-        envelopes = _FALLBACK_ENVELOPES
+        envelopes = base_envelopes
         pipelines = config.get("pipelines", {})
         if pipeline in pipelines:
             pipe_params = pipelines[pipeline].get("parameters", {})

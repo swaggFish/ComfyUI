@@ -28,7 +28,7 @@
     "4": {
       "class_type": "CLIPTextEncode",
       "inputs": {
-        "text": "photorealistic, 8k resolution, cinematic lighting, highly detailed, professional cinematography, A confident, well-rested professional sitting on the edge of the luxurious bed, looking directly at the camera and speaking warmly to the viewer. Sunlight filtering through the room.",
+        "text": "photorealistic, 8k resolution, cinematic lighting, highly detailed, professional cinematography, Dynamic shot of A 3-shot professional marketing video for Semrush. Shot 1: A dynamic, high-contrast shot of a sleek laptop screen showing massive traffic growth charts, professional office lighting. Shot 2: Close-up of hands typing rapidly on a backlit keyboard while a floating AR projection of the Semrush keyword dashboard appears in focus. Shot 3: A confident, well-dressed professional smiling directly at the camera in a modern co-working space, pointing to a Call-To-Action overlay. in action displaying its value to the user, bright, professional and engaging.",
         "clip": [
           "2",
           0
@@ -38,7 +38,7 @@
     "5": {
       "class_type": "CLIPTextEncode",
       "inputs": {
-        "text": "photorealistic, 8k resolution, cinematic lighting, highly detailed, professional cinematography, A confident, well-rested professional sitting on the edge of the luxurious bed, looking directly at the camera and speaking warmly to the viewer. Sunlight filtering through the room.",
+        "text": "cartoon, animated, illustration, low quality, deformed, blurry",
         "clip": [
           "2",
           0
@@ -62,8 +62,8 @@
     "7": {
       "class_type": "EmptyLTXVLatentVideo",
       "inputs": {
-        "width": 1024,
-        "height": 576,
+        "width": 640,
+        "height": 352,
         "length": 97,
         "batch_size": 1
       }
@@ -73,15 +73,15 @@
       "inputs": {
         "cfg": 1.0,
         "model": [
-          "100",
+          "3",
           0
         ],
         "positive": [
-          "6",
+          "35",
           0
         ],
         "negative": [
-          "6",
+          "35",
           1
         ]
       }
@@ -101,7 +101,7 @@
     "11": {
       "class_type": "RandomNoise",
       "inputs": {
-        "noise_seed": 12345
+        "noise_seed": 1084922982
       }
     },
     "12": {
@@ -124,8 +124,8 @@
           0
         ],
         "latent_image": [
-          "7",
-          0
+          "35",
+          2
         ]
       }
     },
@@ -174,7 +174,7 @@
       "inputs": {
         "cfg": 1.0,
         "model": [
-          "100",
+          "3",
           0
         ],
         "positive": [
@@ -202,7 +202,7 @@
     "19": {
       "class_type": "RandomNoise",
       "inputs": {
-        "noise_seed": 12345
+        "noise_seed": 1084922982
       }
     },
     "20": {
@@ -254,7 +254,7 @@
           "21",
           0
         ],
-        "filename_prefix": "story_t2v",
+        "filename_prefix": "shot_003",
         "fps": 25,
         "lossless": true,
         "quality": 100,
@@ -268,21 +268,67 @@
           "21",
           0
         ],
-        "filename_prefix": "story_t2v_frames"
+        "filename_prefix": "shot_003_frames"
       }
     },
-    "100": {
-      "class_type": "LoraLoaderModelOnly",
+    "30": {
+      "class_type": "LoadImage",
       "inputs": {
-        "lora_name": "VBVR-official-comfyui.safetensors",
-        "strength_model": 0.85,
-        "model": [
-          "3",
+        "image": "shot_002_last.png"
+      }
+    },
+    "31": {
+      "class_type": "ResizeImageMaskNode",
+      "inputs": {
+        "input": [
+          "30",
           0
-        ]
+        ],
+        "resize_type": "scale dimensions",
+        "resize_type.width": 640,
+        "resize_type.height": 352,
+        "resize_type.crop": "center",
+        "scale_method": "lanczos"
+      }
+    },
+    "32": {
+      "class_type": "LTXVPreprocess",
+      "inputs": {
+        "image": [
+          "31",
+          0
+        ],
+        "img_compression": 18
+      }
+    },
+    "35": {
+      "class_type": "LTXVAddGuide",
+      "inputs": {
+        "positive": [
+          "6",
+          0
+        ],
+        "negative": [
+          "6",
+          1
+        ],
+        "vae": [
+          "1",
+          2
+        ],
+        "latent": [
+          "7",
+          0
+        ],
+        "image": [
+          "32",
+          0
+        ],
+        "frame_idx": 0,
+        "strength": 1.0
       }
     }
   },
-  "client_id": "4d3c3283-b688-4c2e-95eb-8eb79ac9e0df",
-  "prompt_id": "efff46bb-076c-467b-825f-5c21fcb42383"
+  "client_id": "5fa19c17-7b12-41a8-9de6-b5b4448d858a",
+  "prompt_id": "3bfa0d26-445a-4945-aa6b-f6436d6db98c"
 }

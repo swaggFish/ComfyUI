@@ -38,6 +38,7 @@ from .skills import SkillManager
 from .validator import Critic
 from .director import Director
 from .text_agent import TextDirector
+from . import rife_interpolator
 
 logger = logging.getLogger(__name__)
 
@@ -203,6 +204,42 @@ class SequenceEngine:
             f"✓ Sequence complete: {len(results)} clips generated "
             f"in {sum(r.generation_time for r in results):.1f}s total"
         )
+
+        # ── RIFE Interpolation Pass ──────────────────────────────────
+        # If storyboard was generated at a low fps (≤8) for VRAM savings,
+        # automatically upsample all clips to 24fps using TensorRT RIFE.
+        source_fps = getattr(storyboard, 'fps', 24)
+        if source_fps <= 8:
+            target_fps = 24
+            multiplier = target_fps // source_fps
+            logger.info(
+                f"🎞️  Low-fps storyboard detected ({source_fps}fps). "
+                f"Running RIFE {multiplier}x interpolation → {target_fps}fps..."
+            )
+            rife_out_dir = self.output_dir / "clips_24fps"
+            rife_out_dir.mkdir(exist_ok=True)
+            for result in results:
+                if not result.video_path:
+                    continue
+                clip_in = Path(result.video_path)
+                if not clip_in.exists():
+                    logger.warning(f"Clip not found for RIFE: {clip_in}")
+                    continue
+                clip_out = rife_out_dir / f"{clip_in.stem}_24fps.mp4"
+                logger.info(f"  RIFE: {clip_in.name} → {clip_out.name}")
+                ok = rife_interpolator.interpolate_clip(
+                    input_path=str(clip_in),
+                    output_path=str(clip_out),
+                    multiplier=multiplier,
+                    comfyui_host=self.client.host,
+                    comfyui_port=self.client.port,
+                )
+                if ok:
+                    result.metadata["rife_24fps_path"] = str(clip_out)
+                    logger.info(f"  ✓ RIFE done → {clip_out.name}")
+                else:
+                    logger.warning(f"  ✗ RIFE failed for {clip_in.name} — original kept")
+
         return results
 
     def _generate_with_director_loop(
@@ -373,6 +410,7 @@ class SequenceEngine:
             logger.info(f"Uploaded last frame: {last_image_name}")
 
         # Apply Guardrail 2: Parameter Envelopes
+        source_fps = getattr(storyboard, 'fps', 24) if storyboard else 24
         validated_inputs = Critic.validate_inputs({
             "prompt": full_prompt,
             "negative": negative,
@@ -382,7 +420,8 @@ class SequenceEngine:
             "length": shot.duration_frames,
             "cfg": shot.cfg if hasattr(shot, 'cfg') else 3.5,
             "steps": shot.steps if hasattr(shot, 'steps') else 20,
-        })
+        }, source_fps=source_fps)
+
 
         # Build workflow
         if hasattr(shot, 'skill') and shot.skill:

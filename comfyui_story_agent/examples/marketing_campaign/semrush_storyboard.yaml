@@ -1,6 +1,6 @@
 title: 'Marketing: A 3-shot professiona'
 style: comic
-fps: 24
+fps: 8
 style_prompt: photorealistic, 8k resolution, cinematic lighting, highly detailed,
   professional cinematography
 negative_prompt: cartoon, animated, illustration, low quality, deformed, blurry
@@ -15,7 +15,7 @@ shots:
     professional smiling directly at the camera in a modern co-working space, pointing
     to a Call-To-Action overlay., dynamic lighting, catching the viewer''s attention
     immediately.'
-  duration_frames: 49
+  duration_frames: 97
   camera: pan right
   transition_in: cut
   transition_duration: 0.5
@@ -36,7 +36,7 @@ shots:
     smiling directly at the camera in a modern co-working space, pointing to a Call-To-Action
     overlay. detailing its high-quality material and core functionality, shallow depth
     of field.'
-  duration_frames: 33
+  duration_frames: 97
   camera: zoom in
   transition_in: cut
   transition_duration: 0.5
@@ -57,7 +57,7 @@ shots:
     directly at the camera in a modern co-working space, pointing to a Call-To-Action
     overlay. in action displaying its value to the user, bright, professional and
     engaging.'
-  duration_frames: 49
+  duration_frames: 97
   camera: static
   transition_in: cut
   transition_duration: 0.5
