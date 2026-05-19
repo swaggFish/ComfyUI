@@ -1,71 +1,80 @@
-title: 'Marketing: A 3-shot professiona'
-style: comic
-fps: 8
-style_prompt: photorealistic, 8k resolution, cinematic lighting, highly detailed,
-  professional cinematography
-negative_prompt: cartoon, animated, illustration, low quality, deformed, blurry
+title: 'Semrush — Be Found First (v3)'
+style: photorealistic
+fps: 24
+style_prompt: >-
+  photorealistic, 8k resolution, cinematic lighting, highly detailed,
+  professional cinematography, shallow depth of field, color graded,
+  commercial advertisement quality
+negative_prompt: >-
+  cartoon, animated, illustration, low quality, deformed, blurry,
+  text overlay, watermark, logo, split screen, multiple scenes,
+  slow motion, timelapse
 output_dir: ./output/story
 shots:
+
+# ─── Scene 1: Dashboard / Traffic Growth ────────────────────────
 - shot_id: 1
-  prompt: 'Cinematic wide establishing shot of A 3-shot professional marketing video
-    for Semrush. Shot 1: A dynamic, high-contrast shot of a sleek laptop screen showing
-    massive traffic growth charts, professional office lighting. Shot 2: Close-up
-    of hands typing rapidly on a backlit keyboard while a floating AR projection of
-    the Semrush keyword dashboard appears in focus. Shot 3: A confident, well-dressed
-    professional smiling directly at the camera in a modern co-working space, pointing
-    to a Call-To-Action overlay., dynamic lighting, catching the viewer''s attention
-    immediately.'
+  prompt: >-
+    Cinematic slow pan across a sleek modern office desk. A glowing laptop screen
+    displays a professional analytics dashboard with dramatically rising traffic
+    charts in green and blue. Warm professional office lighting with soft bokeh
+    background. A cup of coffee sits beside the laptop. The charts animate upward
+    showing exponential growth. Clean, minimal, premium tech aesthetic.
   duration_frames: 97
   camera: pan right
   transition_in: cut
   transition_duration: 0.5
-  first_frame_path: null
-  last_frame_path: null
+  first_frame_path: /home/mikeyb/.gemini/antigravity/brain/38e67136-715f-4218-afb0-2345a89a1faa/artifacts/semrush_v3_anchors/shot1_first.png
+  last_frame_path: /home/mikeyb/.gemini/antigravity/brain/38e67136-715f-4218-afb0-2345a89a1faa/artifacts/semrush_v3_anchors/shot1_last.png
   seed: -1
-  width: 1280
-  height: 704
+  width: 1024
+  height: 576
   style_override: null
   skill: null
   expected_text: null
+
+# ─── Scene 2: Keyboard / Research Dashboard ─────────────────────
+# Independent scene (no i2v chaining from shot 1)
 - shot_id: 2
-  prompt: 'Extreme close up of A 3-shot professional marketing video for Semrush.
-    Shot 1: A dynamic, high-contrast shot of a sleek laptop screen showing massive
-    traffic growth charts, professional office lighting. Shot 2: Close-up of hands
-    typing rapidly on a backlit keyboard while a floating AR projection of the Semrush
-    keyword dashboard appears in focus. Shot 3: A confident, well-dressed professional
-    smiling directly at the camera in a modern co-working space, pointing to a Call-To-Action
-    overlay. detailing its high-quality material and core functionality, shallow depth
-    of field.'
+  prompt: >-
+    Extreme close-up of hands typing rapidly on a backlit mechanical keyboard.
+    The keys glow with a subtle blue-white light. A large curved ultrawide monitor
+    in the background displays a colorful keyword research dashboard with search
+    volume graphs and ranking data. Shallow depth of field focuses on the fingers
+    while the screen data is softly visible. Professional office environment,
+    moody ambient lighting with blue and teal accents.
   duration_frames: 97
   camera: zoom in
   transition_in: cut
   transition_duration: 0.5
-  first_frame_path: null
-  last_frame_path: null
+  first_frame_path: /home/mikeyb/.gemini/antigravity/brain/38e67136-715f-4218-afb0-2345a89a1faa/artifacts/semrush_v3_anchors/shot2_first.png
+  last_frame_path: /home/mikeyb/.gemini/antigravity/brain/38e67136-715f-4218-afb0-2345a89a1faa/artifacts/semrush_v3_anchors/shot2_last.png
   seed: -1
-  width: 1280
-  height: 704
+  width: 1024
+  height: 576
   style_override: null
   skill: null
   expected_text: null
+
+# ─── Scene 3: Talking Head CTA ──────────────────────────────────
+# Independent scene (no i2v chaining from shot 2)
 - shot_id: 3
-  prompt: 'Dynamic shot of A 3-shot professional marketing video for Semrush. Shot
-    1: A dynamic, high-contrast shot of a sleek laptop screen showing massive traffic
-    growth charts, professional office lighting. Shot 2: Close-up of hands typing
-    rapidly on a backlit keyboard while a floating AR projection of the Semrush keyword
-    dashboard appears in focus. Shot 3: A confident, well-dressed professional smiling
-    directly at the camera in a modern co-working space, pointing to a Call-To-Action
-    overlay. in action displaying its value to the user, bright, professional and
-    engaging.'
+  prompt: >-
+    Medium shot of a confident, well-dressed young professional man in a navy blazer
+    sitting in a modern bright co-working space. He faces the camera directly with a
+    warm genuine smile. Natural daylight streams through large windows behind him.
+    Clean white walls, indoor plants, and modern furniture in the background. He
+    gestures towards the camera invitingly with one hand. Professional headshot
+    quality lighting, warm skin tones, sharp focus on the face.
   duration_frames: 97
   camera: static
   transition_in: cut
   transition_duration: 0.5
-  first_frame_path: null
-  last_frame_path: null
+  first_frame_path: /home/mikeyb/.gemini/antigravity/brain/38e67136-715f-4218-afb0-2345a89a1faa/artifacts/semrush_v3_anchors/shot3_first.png
+  last_frame_path: /home/mikeyb/.gemini/antigravity/brain/38e67136-715f-4218-afb0-2345a89a1faa/artifacts/semrush_v3_anchors/shot3_last.png
   seed: -1
-  width: 1280
-  height: 704
+  width: 1024
+  height: 576
   style_override: null
   skill: null
   expected_text: null

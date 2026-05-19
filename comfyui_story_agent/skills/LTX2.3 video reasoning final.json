@@ -463,7 +463,7 @@
     "inputs": {
       "tile_size": 512,
       "overlap": 64,
-      "temporal_size": 2048,
+      "temporal_size": 16,
       "temporal_overlap": 8,
       "samples": [
         "209:240",
