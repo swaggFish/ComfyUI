@@ -27,3 +27,34 @@ uv.lock
 # Ignore marketing agent generated output directories and video files
 comfyui_story_agent/examples/marketing_campaign/*_output*/
 *.mp4
+
+# Common build, cache, and generated files
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.ipynb_checkpoints/
+.coverage
+coverage.xml
+htmlcov/
+
+# SQLite / DB files (generated during tests or runtime)
+*.sqlite
+*.sqlite3
+*.db
+
+# Build / packaging
+dist/
+build/
+*.egg-info/
+
+# Node / frontend
+node_modules/
+web/build/
+
+# Editor temporary files
+*.swp
+*.tmp
+*.temp
+Thumbs.db
+ehthumbs.db
