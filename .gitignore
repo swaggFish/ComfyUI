@@ -58,3 +58,9 @@ web/build/
 *.temp
 Thumbs.db
 ehthumbs.db
+
+# Additional generated media and script logs
+*.mp3
+changed_files.txt
+test_extract.png
+comfyui_story_agent/examples/marketing_campaign/eight_sleep_anchors/
