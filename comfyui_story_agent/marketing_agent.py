@@ -6,6 +6,7 @@ from typing import Optional
 
 from .shot_planner import StoryBoard, Shot
 from .sequence_engine import SequenceEngine
+from .writer_agent import WriterAgent
 from .comfyui_client import ComfyUIClient
 
 logger = logging.getLogger(__name__)
@@ -49,8 +50,61 @@ class MarketingVideoAgent:
         else:
             self.llm_client = None
 
-    def conceptualize_video(self, product_concept: str, num_shots: int = 3) -> StoryBoard:
+        self.writer = WriterAgent(
+            llm_client=self.llm_client,
+            api_key=self.gemini_api_key,
+            model="gemini-2.5-pro",
+        )
+
+    def recommend_product_opportunities(
+        self,
+        category: str,
+        platforms: Optional[list[str]] = None,
+        num_ideas: int = 3,
+    ) -> dict:
+        """Recommend high-potential product ideas and social media revenue targets."""
+        return self.writer.recommend_product_opportunities(
+            category=category,
+            platforms=platforms,
+            num_ideas=num_ideas,
+        )
+
+    def create_ad_script(
+        self,
+        storyboard: StoryBoard,
+        product_name: str,
+        platform: str = "TikTok",
+        tone: str = "urgent and cinematic",
+    ) -> dict:
+        """Generate platform-specific ad script copy for a storyboard."""
+        return self.writer.write_ad_script(
+            storyboard=storyboard,
+            product_name=product_name,
+            platform=platform,
+            tone=tone,
+        )
+
+    def conceptualize_video(
+        self,
+        product_concept: str,
+        num_shots: int = 3,
+        target_length_sec: int = 30,
+        platforms: Optional[list[str]] = None,
+    ) -> StoryBoard:
         """Takes a concept and creates a storyboard detailing functionality and value."""
+        if self.writer:
+            try:
+                return self.writer.draft_storyboard(
+                    product_concept=product_concept,
+                    num_shots=num_shots,
+                    target_length_sec=target_length_sec,
+                    platforms=platforms,
+                )
+            except Exception as e:
+                logger.warning(
+                    f"WriterAgent storyboard generation failed: {e}. Falling back to default storyboard."
+                )
+
         if not self.llm_client:
             logger.warning("No LLM client available. Falling back to a template marketing storyboard.")
             return self._fallback_storyboard(product_concept, num_shots)
@@ -171,10 +225,12 @@ class MarketingVideoAgent:
         logger.info(f"Conceptualizing marketing video for: {product_concept}")
         storyboard = self.conceptualize_video(product_concept, num_shots)
         
+        return self.produce_storyboard(storyboard, on_progress=on_progress)
+
+    def produce_storyboard(self, storyboard: StoryBoard, on_progress=None):
+        """Generate a sequence from an existing storyboard."""
         logger.info(f"Starting production for '{storyboard.title}' with {len(storyboard.shots)} shots.")
-        # Uses SequenceEngine which utilizes Director for visual QA and continuity tracking
-        results = self.engine.generate_sequence(storyboard, on_progress=on_progress)
-        return results
+        return self.engine.generate_sequence(storyboard, on_progress=on_progress)
 
     def save_storyboard(self, storyboard: StoryBoard, filename: str):
         """Helper to save the generated storyboard before producing."""

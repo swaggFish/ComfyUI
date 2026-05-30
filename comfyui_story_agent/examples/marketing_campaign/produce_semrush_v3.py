@@ -94,8 +94,14 @@ def wait_for_comfyui(timeout=60):
 
 
 def kill_comfyui():
-    """Kill any running ComfyUI processes."""
-    subprocess.run(["pkill", "-f", "main.py.*--bf16-vae"], capture_output=True)
+    """Kill any running ComfyUI processes and clear GPU memory."""
+    patterns = [
+        str(COMFYUI_ROOT / "launch_ltx.sh"),
+        str(COMFYUI_ROOT / "main.py"),
+        "main.py.*--bf16-vae",
+    ]
+    for pattern in patterns:
+        subprocess.run(["pkill", "-f", pattern], capture_output=True)
     time.sleep(3)
     # Force-clear GPU memory
     subprocess.run([
@@ -173,11 +179,13 @@ def generate_single_scene(scene: dict, output_dir: Path) -> Path | None:
     print(f"  Generating scene {scene['id']}...", flush=True)
     result = subprocess.run(
         cmd, cwd=str(COMFYUI_ROOT),
-        capture_output=True, text=True, timeout=600
+        capture_output=True, text=True, timeout=7200
     )
 
     if result.returncode != 0:
-        print(f"  ✗ Generation failed: {result.stderr[-300:]}")
+        print("  ✗ Generation failed:")
+        print(result.stdout[-1000:])
+        print(result.stderr[-1000:])
         return None
 
     # Find the output clip (latest webp)

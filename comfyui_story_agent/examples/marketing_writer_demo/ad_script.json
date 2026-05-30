@@ -1,0 +1,52 @@
+{
+  "hook": "They said 8 hours of perfect sleep every night was impossible. They were wrong.",
+  "script": [
+    {
+      "shot_number": 1,
+      "duration_seconds": 3,
+      "visual": "A close-up shot of a person looking exhausted, yawning at their desk late at night. The blue light from a laptop screen illuminates their tired face. A messy desk with coffee cups and papers.",
+      "audio": "Sound of a deep yawn, quiet keyboard tapping, and a single notification ping.",
+      "text_overlay": "You think this is just 'being tired'?"
+    },
+    {
+      "shot_number": 2,
+      "duration_seconds": 4,
+      "visual": "Quick cuts: The person spills coffee in the morning. They look zoned-out during a video call. They're wide-eyed in bed, staring at the ceiling, unable to sleep.",
+      "audio": "(Calm, confident Voiceover starts) \"It's not. It's your body screaming for real rest. Not just closing your eyes, but deep, restorative sleep.\"",
+      "text_overlay": "Your body is begging for this."
+    },
+    {
+      "shot_number": 3,
+      "duration_seconds": 3,
+      "visual": "The scene shifts dramatically. The person stands before the sleek, futuristic 'RestFlow Sleep Pod'. It's closed and glows with a soft, calming light. They reach out and touch the smooth surface with a sense of awe.",
+      "audio": "(VO) \"We've been using the same sleep technology for centuries. Until now.\" (A soft, futuristic humming sound fades in).",
+      "text_overlay": "Welcome to the future of sleep."
+    },
+    {
+      "shot_number": 4,
+      "duration_seconds": 4,
+      "visual": "The pod door glides open silently. The person gets in, settling into the plush, ergonomic interior. The pod closes, and we see a subtle, pulsing light pattern on the exterior, visualizing a sleep cycle.",
+      "audio": "(VO) \"RestFlow uses personalized sonic waves and gentle temperature regulation to guide you into deep sleep cycles in minutes, not hours.\"",
+      "text_overlay": "Deep Sleep in Minutes"
+    },
+    {
+      "shot_number": 5,
+      "duration_seconds": 4,
+      "visual": "The pod door opens with a soft morning light spilling in. The person emerges, but they look completely transformed. They are smiling, refreshed, and full of energy, taking a deep, satisfying stretch.",
+      "audio": "Upbeat, inspiring music begins to swell. (VO) \"So you don't just wake up. You're reborn. Every single morning.\"",
+      "text_overlay": "Wake up 100% recharged."
+    },
+    {
+      "shot_number": 6,
+      "duration_seconds": 3,
+      "visual": "Final shot of the RestFlow Sleep Pod in a beautifully designed, minimalist bedroom, with the product name and logo clearly visible.",
+      "audio": "(VO) \"Stop surviving. Start thriving. Tap the link to get your RestFlow.\"",
+      "text_overlay": "Your best self is waiting."
+    }
+  ],
+  "cta": {
+    "button_text": "Shop Now",
+    "caption_text": "Ready to upgrade your life? Click the link in our bio to discover the RestFlow Sleep Pod. #SleepTech #FutureOfSleep #Biohacking #DeepSleep"
+  },
+  "tone": "Aspirational, Relatable, and Soothing with a futuristic wonder."
+}

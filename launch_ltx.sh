@@ -60,5 +60,5 @@ fi
 python3 "${SCRIPT_DIR}/main.py" \
     --bf16-vae \
     --lowvram \
-    --reserve-vram 8 \
+    --reserve-vram 3 \
     "$@"

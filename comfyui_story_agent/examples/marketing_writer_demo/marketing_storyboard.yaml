@@ -1,0 +1,73 @@
+title: 'DreamWeave: The Future of Sleep'
+style: comic
+fps: 4
+style_prompt: cinematic, hyper-realistic, 8k, soft focus, luxurious bedroom, calm,
+  serene, premium materials, warm ambient lighting, natural textures, lifestyle photography
+negative_prompt: blurry, low-quality, cartoon, anime, ugly, cluttered, harsh lighting,
+  medical device, hospital, messy
+output_dir: ./output/story
+shots:
+- shot_id: 1
+  prompt: A stylish young professional tossing and turning in a beautifully designed,
+    minimalist bedroom at night, face showing subtle frustration, moonlight streaming
+    through the window.
+  duration_frames: 30
+  camera: Medium shot, slow dolly pull-back.
+  transition_in: cut
+  transition_duration: 0.5
+  first_frame_path: null
+  last_frame_path: null>
+  seed: -1
+  width: 1280
+  height: 704
+  style_override: null
+  skill: null
+  expected_text: Tired of restless nights?
+- shot_id: 2
+  prompt: Extreme close-up on a sleek, minimalist sleep optimization device on a modern
+    nightstand. The device has a soft, glowing light and is made of matte white and
+    brushed metal materials. A hand gently places it on the nightstand.
+  duration_frames: 30
+  camera: Macro shot, focus pull from background to the device.
+  transition_in: dissolve
+  transition_duration: 0.5
+  first_frame_path: null
+  last_frame_path: null
+  seed: -1
+  width: 1280
+  height: 704
+  style_override: null
+  skill: null
+  expected_text: Introducing DreamWeave.
+- shot_id: 3
+  prompt: The same person from shot 1 now sleeping deeply and peacefully under a crisp
+    duvet. A very subtle, gentle ripple effect moves across the blanket. The room's
+    ambient light is warm and comforting. A feeling of total serenity.
+  duration_frames: 30
+  camera: Overhead top-down shot, slow, almost imperceptible zoom-in.
+  transition_in: dissolve
+  transition_duration: 0.5
+  first_frame_path: null
+  last_frame_path: null
+  seed: -1
+  width: 1280
+  height: 704
+  style_override: null
+  skill: null
+  expected_text: Smart Temp. Gentle Motion. Deep Sleep.
+- shot_id: 4
+  prompt: The person wakes up with the morning sun, smiling and stretching, looking
+    refreshed and energized. The DreamWeave device is visible on the nightstand in
+    the background, a seamless part of a beautiful, modern bedroom.
+  duration_frames: 30
+  camera: Medium shot from the foot of the bed, slight pan to follow their stretch.
+  transition_in: cut
+  transition_duration: 0.5
+  first_frame_path: null
+  last_frame_path: null
+  seed: -1
+  width: 1280
+  height: 704
+  style_override: null
+  skill: null
+  expected_text: Optimize Your Sleep. Shop Now.

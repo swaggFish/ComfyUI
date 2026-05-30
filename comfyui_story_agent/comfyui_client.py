@@ -278,20 +278,34 @@ class ComfyUIClient:
         logger.info(f"Waiting for execution of {prompt_id}...")
 
         start_time = time.time()
+        last_poll_time = time.time()
         while True:
             if time.time() - start_time > self.timeout:
                 raise ComfyUIError(
                     f"Execution timed out after {self.timeout}s"
                 )
 
+            # Periodic REST API polling as backup
+            if time.time() - last_poll_time > 5.0:
+                last_poll_time = time.time()
+                try:
+                    history = self.get_history(prompt_id)
+                    if history:
+                        logger.info(f"Backup poll detected completed prompt {prompt_id}")
+                        break
+                except Exception:
+                    pass
+
+            out = None
             try:
+                self._ws.settimeout(2.0)
                 out = self._ws.recv()
             except websocket.WebSocketTimeoutException:
-                raise ComfyUIError("WebSocket receive timed out")
+                continue
             except Exception as e:
                 raise ComfyUIError(f"WebSocket error: {e}")
 
-            if isinstance(out, str):
+            if out is not None and isinstance(out, str):
                 message = json.loads(out)
                 msg_type = message.get("type", "")
 

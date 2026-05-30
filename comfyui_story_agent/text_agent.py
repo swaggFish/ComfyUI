@@ -29,19 +29,30 @@ class TextEvaluation(BaseModel):
 _TEXT_DIRECTOR_SYSTEM_PROMPT = """You are a quality control OCR Director for an AI video production pipeline.
 Your job is to read the text in the provided video frames (first, middle, last) and verify if it is highly legible and matches the expected text.
 
-AI video models often scramble, morph, or warp text over time. 
-If the text is gibberish, morphing, unreadable, or missing, the shot FAILS.
-If the text matches the expected text perfectly and remains stable throughout the frames, the shot PASSES.
+AI video models often scramble, morph, or warp text over time.
+If the text is gibberish, morphing, unreadable, missing, or changes between frames, the shot FAILS.
+If the text matches the expected text clearly and remains stable across the frames, the shot PASSES.
 
-If it fails, recommend an action. For text stability, 'increase_first_strength', 'decrease_cfg', or 'reseed' are best to keep it closer to the starting anchor frame.
+Return a structured JSON response with:
+- passed: true/false
+- confidence: 0.0-1.0
+- issues: list of frame-level transcription issues
+- recommended_action: one of 'reseed', 'scrap_and_rethink', 'increase_first_strength', 'decrease_cfg', or 'none'
+- negative_prompt_addition: optional text to add to the negative prompt
+- summary: concise explanation of the decision
+
+If the shot fails due to illegible or incorrect text, prefer 'scrap_and_rethink'.
+If the shot fails because the text is slightly distorted but still mostly legible, prefer 'reseed'.
+Do NOT suggest any creative prompt rewrites; only choose one mathematical or stability-oriented correction action.
 """
 
 _TEXT_EVALUATION_PROMPT = """Review these frames from a generated video clip.
 
 Expected Text to find on screen: "{expected_text}"
 
-Please transcribe all text visible in the frames. Compare it to the expected text.
-If it is mangled, missing, or morphs into gibberish in the middle/last frames, rate passed=False and describe the issue.
+Please transcribe all text visible in the frames and compare it to the expected text.
+If the text is mangled, missing, or morphs into gibberish, set passed=false and describe the issue.
+Return only valid JSON matching the TextEvaluation schema.
 """
 
 def evaluate_text_with_gemini(
@@ -89,20 +100,16 @@ def evaluate_text_with_gemini(
             evaluation = TextEvaluation(**raw)
         else:
             evaluation = TextEvaluation(passed=True, summary="Auto-passed (empty response).")
+
+        if not evaluation.passed and evaluation.recommended_action == RecommendedAction.none:
+            evaluation.recommended_action = RecommendedAction.scrap_and_rethink
+            evaluation.summary = (
+                evaluation.summary
+                or "Text failed with no recommended action; defaulting to scrap_and_rethink."
+            )
     except Exception as e:
         logger.error(f"Text evaluation failed: {e}")
         evaluation = TextEvaluation(passed=True, summary=f"Error: {e}")
-
-    logger.info(
-        f"TextDirector verdict: {'PASS ✅' if evaluation.passed else 'FAIL ❌'} | "
-        f"Action: {evaluation.recommended_action.value} | "
-        f"Summary: {evaluation.summary}"
-    )
-
-    if evaluation.issues:
-        for issue in evaluation.issues:
-            logger.info(f"  ⚠️  [{issue.frame_location}] Expected: '{issue.expected_text}' -> Actual: '{issue.actual_transcription}'")
-
     return evaluation
 
 class TextDirector:

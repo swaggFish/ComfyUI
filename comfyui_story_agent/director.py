@@ -309,6 +309,15 @@ def compute_corrections(
     corrections = current_params.copy()
     action = evaluation.recommended_action
 
+    # If the evaluation failed but the model returned no explicit action,
+    # choose a conservative fallback so retries do not become no-ops.
+    if not evaluation.passed and action == RecommendedAction.none:
+        action = RecommendedAction.scrap_and_rethink
+        logger.warning(
+            "Director correction: No recommended_action returned for failed evaluation; "
+            "defaulting to scrap_and_rethink."
+        )
+
     # Load envelopes for boundary clamping
     defaults = Critic.get_envelope_defaults("flf2v_cinematic")
 
@@ -492,6 +501,17 @@ class Director:
           - The action is 'scrap_and_rethink' on the last attempt
         """
         if evaluation.passed:
+            return False
+        if evaluation.drift_severity in (DriftSeverity.high, DriftSeverity.critical) and attempt >= 2:
+            logger.warning(
+                "Director: High/critical drift persisted after multiple retries; "
+                "stopping early to avoid wasted computation."
+            )
+            return False
+        if evaluation.recommended_action == RecommendedAction.scrap_and_rethink and attempt >= 2:
+            logger.warning(
+                "Director: Scrap-and-rethink action repeated; stopping retries early."
+            )
             return False
         if attempt >= self.max_retries:
             logger.warning(

@@ -1,0 +1,75 @@
+title: Aura Sleep - Unlock Your Best Rest
+style: comic
+fps: 8
+style_prompt: Cinematic, high-end lifestyle ad, soft focus, a mix of cool night tones
+  and warm morning light, minimalist Scandinavian interior design, serene and calming
+  mood, hyper-realistic 8k, shot on Arri Alexa.
+negative_prompt: Cartoon, anime, cluttered room, harsh lighting, unrealistic colors,
+  blurry, low quality, text artifacts.
+output_dir: ./output/story
+shots:
+- shot_id: 1
+  prompt: A stylish person in their late 20s, tossing and turning in a beautifully
+    designed, minimalist bed at night. Moonlight streams through a large window. Their
+    face shows clear frustration with being unable to sleep.
+  duration_frames: 57
+  camera: Slow push-in on the person's face.
+  transition_in: cut
+  transition_duration: 0.5
+  first_frame_path: null
+  last_frame_path: null
+  seed: -1
+  width: 1280
+  height: 704
+  style_override: null
+  skill: null
+  expected_text: Can't turn your brain off?
+- shot_id: 2
+  prompt: Extreme close-up product shot. A sleek, matte white sleep optimization device
+    sits on a modern oak nightstand next to a glass of water. A soft, pulsing light
+    emanates from the device, reflecting on the glass. The design is elegant and non-medical.
+  duration_frames: 49
+  camera: Slow orbital pan revealing the full product design.
+  transition_in: cut
+  transition_duration: 0.5
+  first_frame_path: null
+  last_frame_path: null
+  seed: -1
+  width: 1280
+  height: 704
+  style_override: null
+  skill: null
+  expected_text: null
+- shot_id: 3
+  prompt: An abstract, dream-like visual from above the bed. A soft, cool-blue light
+    wave gently washes over the peacefully sleeping person, symbolizing temperature
+    control. The frame has a subtle, slow rocking motion, implying gentle movement.
+  duration_frames: 57
+  camera: Static top-down view.
+  transition_in: dissolve
+  transition_duration: 0.5
+  first_frame_path: null
+  last_frame_path: null
+  seed: -1
+  width: 1280
+  height: 704
+  style_override: null
+  skill: null
+  expected_text: Smart Temp & Motion Cues
+- shot_id: 4
+  prompt: The same person from shot 1 wakes up in a sun-drenched room. They stretch,
+    smiling and looking genuinely refreshed and energized. The sleep device is visible
+    and in focus on the nightstand in the background.
+  duration_frames: 49
+  camera: Gentle pull-back from a close-up of their smiling face to a medium shot.
+  transition_in: dissolve
+  transition_duration: 0.5
+  first_frame_path: null
+  last_frame_path: null
+  seed: -1
+  width: 1280
+  height: 704
+  style_override: null
+  skill: null
+  expected_text: Tired of being tired? Tap the link in bio to discover the RestFlow
+    Sleep Pod and get 100 nights risk-free!

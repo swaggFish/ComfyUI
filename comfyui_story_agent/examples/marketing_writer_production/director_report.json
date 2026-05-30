@@ -1,0 +1,38 @@
+{
+  "total_evaluations": 4,
+  "total_retries": 0,
+  "corrections": [
+    {
+      "shot_id": 0,
+      "attempt": 1,
+      "passed": false,
+      "severity": "critical",
+      "action": "scrap_and_rethink",
+      "summary": "TextDirector failed: The expected text 'Can't turn your brain off?' is completely absent from all frames. Instead, a consistent string of gibberish ('TORTUTEEIINO CLOSROTAN PRIDNASR') appears, and in the last frame, a large, unreadable, distorted text element is also present. The shot fails due to the complete absence and mangling of the intended text. | The video clip is critically flawed as the intended scene only appears in the middle frame, with the first and last frames being black screens with unreadable text, indicating a complete failure in content generation and severe drift."
+    },
+    {
+      "shot_id": 0,
+      "attempt": 1,
+      "passed": false,
+      "severity": "critical",
+      "action": "reseed",
+      "summary": "The clip completely failed to generate the intended scene, displaying only an error message-like text on a black background instead of a product shot."
+    },
+    {
+      "shot_id": 0,
+      "attempt": 1,
+      "passed": false,
+      "severity": "critical",
+      "action": "scrap_and_rethink",
+      "summary": "TextDirector failed: The expected text 'Smart Temp & Motion Cues' is entirely missing from all frames. The first and last frames display completely illegible gibberish, while the middle frame contains no text at all. | The video clip exhibits critical drift, with the intended scene appearing only in the middle frame, while the first and last frames are completely black with unrelated text and specks, indicating a severe failure in content and style consistency."
+    },
+    {
+      "shot_id": 0,
+      "attempt": 1,
+      "passed": false,
+      "severity": "critical",
+      "action": "scrap_and_rethink",
+      "summary": "TextDirector failed: The text in all frames is completely illegible gibberish and bears no resemblance to the expected text. The shot fails due to severe text corruption. | The video generation failed completely, producing only placeholder text on a black screen instead of the intended scene."
+    }
+  ]
+}

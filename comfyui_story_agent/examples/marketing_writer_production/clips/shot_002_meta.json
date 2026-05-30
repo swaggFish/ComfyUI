@@ -1,0 +1,12 @@
+{
+  "shot_id": 2,
+  "video_path": "/home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_writer_production/clips/shot_002_00039_.webp",
+  "last_frame_path": "/home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_writer_production/frames/shot_002_last.png",
+  "first_frame_path": "/home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_writer_production/frames/shot_001_last.png",
+  "prompt_used": "Cinematic, high-end lifestyle ad, soft focus, a mix of cool night tones and warm morning light, minimalist Scandinavian interior design, serene and calming mood, hyper-realistic 8k, shot on Arri Alexa., Extreme close-up product shot. A sleek, matte white sleep optimization device sits on a modern oak nightstand next to a glass of water. A soft, pulsing light emanates from the device, reflecting on the glass. The design is elegant and non-medical.",
+  "seed_used": -1,
+  "width": 1280,
+  "height": 704,
+  "frame_count": 49,
+  "generation_time": 226.01476073265076
+}

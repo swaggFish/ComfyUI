@@ -16,6 +16,7 @@ import json
 import logging
 import os
 import subprocess
+import tempfile
 import time
 from pathlib import Path
 from typing import Optional
@@ -138,18 +139,33 @@ def interpolate_clip(
     input_fps = num / den
     logger.info(f"[RIFE] Input: {input_path.name}  {width}x{height}  {input_fps:.1f}fps")
 
-    # ── Step 2: Copy input video to ComfyUI input dir ──────────────────
+    # ── Step 2: Transcode WebP to MP4 if needed for RIFE stability ──────
+    working_input_path = input_path
+    temp_input = None
+    if input_path.suffix.lower() == ".webp":
+        temp_input = Path(tempfile.mktemp(suffix=".mp4"))
+        transcode_cmd = [
+            "ffmpeg", "-y", "-i", str(input_path),
+            "-c:v", "libx264", "-preset", "fast",
+            "-crf", "18", "-pix_fmt", "yuv420p",
+            str(temp_input),
+        ]
+        subprocess.run(transcode_cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=120)
+        working_input_path = temp_input
+        logger.info(f"[RIFE] Transcoded WebP to MP4 for RIFE: {working_input_path.name}")
+
+    # ── Step 3: Copy input video to ComfyUI input dir ──────────────────
     comfyui_input_dir = Path(__file__).parent.parent / "input"
     comfyui_input_dir.mkdir(exist_ok=True)
-    dest = comfyui_input_dir / input_path.name
+    dest = comfyui_input_dir / working_input_path.name
     import shutil
-    shutil.copy2(input_path, dest)
+    shutil.copy2(working_input_path, dest)
     logger.info(f"[RIFE] Copied input to ComfyUI input dir: {dest}")
 
-    # ── Step 3: Build and queue the workflow ──────────────────────────
-    output_prefix = f"rife_{input_path.stem}"
+    # ── Step 4: Build and queue the workflow ──────────────────────────
+    output_prefix = f"rife_{working_input_path.stem}"
     workflow = build_rife_workflow(
-        input_frames_dir=input_path.name,
+        input_frames_dir=working_input_path.name,
         output_prefix=output_prefix,
         multiplier=multiplier,
         width=width,
@@ -165,7 +181,20 @@ def interpolate_clip(
         prompt_id = resp.json()["prompt_id"]
         logger.info(f"[RIFE] Queued RIFE workflow: {prompt_id}")
     except Exception as e:
-        logger.error(f"[RIFE] Failed to queue workflow: {e}")
+        error_details = ""
+        if hasattr(e, "response") and getattr(e, "response") is not None:
+            try:
+                error_details = e.response.text
+            except Exception:
+                error_details = str(e)
+        logger.error(
+            f"[RIFE] Failed to queue workflow: {e} {error_details}"
+        )
+        if temp_input and temp_input.exists():
+            try:
+                temp_input.unlink()
+            except Exception:
+                pass
         return False
 
     # ── Step 4: Wait for completion via WebSocket ─────────────────────
@@ -176,13 +205,28 @@ def interpolate_clip(
 
     try:
         ws = websocket.create_connection(ws_url, timeout=10)
+        last_poll_time = time.time()
         while True:
             if time.time() - start > timeout:
                 logger.error("[RIFE] WebSocket timeout waiting for RIFE completion")
                 ws.close()
                 return False
+
+            # Periodic REST API polling as backup
+            if time.time() - last_poll_time > 5.0:
+                last_poll_time = time.time()
+                try:
+                    history = requests.get(f"http://{server}/history/{prompt_id}", timeout=5).json()
+                    if prompt_id in history:
+                        logger.info("[RIFE] Backup poll detected RIFE complete!")
+                        break
+                except Exception:
+                    pass
+
             try:
-                msg = json.loads(ws.recv())
+                ws.settimeout(2.0)
+                msg_raw = ws.recv()
+                msg = json.loads(msg_raw)
             except Exception:
                 continue
 
@@ -195,6 +239,11 @@ def interpolate_clip(
         ws.close()
     except Exception as e:
         logger.error(f"[RIFE] WebSocket error: {e}")
+        if temp_input and temp_input.exists():
+            try:
+                temp_input.unlink()
+            except Exception:
+                pass
         return False
 
     # ── Step 5: Retrieve the output file ─────────────────────────────
@@ -219,6 +268,12 @@ def interpolate_clip(
     except Exception as e:
         logger.error(f"[RIFE] Failed to download output: {e}")
         return False
+    finally:
+        if temp_input and temp_input.exists():
+            try:
+                temp_input.unlink()
+            except Exception:
+                pass
 
     return output_file is not None
 

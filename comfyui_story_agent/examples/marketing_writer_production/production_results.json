@@ -1,0 +1,50 @@
+[
+  {
+    "shot_id": 1,
+    "video_path": "/home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_writer_production/clips/shot_001_00049_.webp",
+    "last_frame_path": "/home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_writer_production/frames/shot_001_last.png",
+    "first_frame_path": "",
+    "prompt_used": "Cinematic, high-end commercial, shallow depth of field, moody lighting transitioning to bright and optimistic, hyper-realistic, 8K, premium lifestyle aesthetic, soft focus, Cinematic shot of a stylish person tossing and turning in a modern, minimalist bedroom at night, face showing frustration, unable to sleep. High-end bedding, soft moonlight from a window.",
+    "seed_used": -1,
+    "width": 1280,
+    "height": 704,
+    "frame_count": 57,
+    "generation_time": 119.18085885047913
+  },
+  {
+    "shot_id": 2,
+    "video_path": "/home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_writer_production/clips/shot_002_00035_.webp",
+    "last_frame_path": "/home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_writer_production/frames/shot_002_last.png",
+    "first_frame_path": "/home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_writer_production/frames/shot_001_last.png",
+    "prompt_used": "Cinematic, high-end commercial, shallow depth of field, moody lighting transitioning to bright and optimistic, hyper-realistic, 8K, premium lifestyle aesthetic, soft focus, Macro product shot. A sleek, white and brushed metal sleep optimization device sits on a dark wood nightstand. A soft, cool blue light emanates from it. Minimalist, futuristic, and desirable design.",
+    "seed_used": -1,
+    "width": 1280,
+    "height": 704,
+    "frame_count": 49,
+    "generation_time": 111.98346972465515
+  },
+  {
+    "shot_id": 3,
+    "video_path": "/home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_writer_production/clips/shot_003_00028_.webp",
+    "last_frame_path": "/home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_writer_production/frames/shot_003_last.png",
+    "first_frame_path": "/home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_writer_production/frames/shot_002_last.png",
+    "prompt_used": "Cinematic, high-end commercial, shallow depth of field, moody lighting transitioning to bright and optimistic, hyper-realistic, 8K, premium lifestyle aesthetic, soft focus, Abstract visualizer. A gentle, cool blue wave graphic flows across the screen, representing temperature control, followed by a soft, pulsing ripple effect representing motion cues. The visuals are calm and hypnotic.",
+    "seed_used": -1,
+    "width": 1280,
+    "height": 704,
+    "frame_count": 57,
+    "generation_time": 118.80043268203735
+  },
+  {
+    "shot_id": 4,
+    "video_path": "/home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_writer_production/clips/shot_004_00011_.webp",
+    "last_frame_path": "/home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_writer_production/frames/shot_004_last.png",
+    "first_frame_path": "/home/mikeyb/Documents/AI/ComfyUI/comfyui_story_agent/examples/marketing_writer_production/frames/shot_003_last.png",
+    "prompt_used": "Cinematic, high-end commercial, shallow depth of field, moody lighting transitioning to bright and optimistic, hyper-realistic, 8K, premium lifestyle aesthetic, soft focus, The same person waking up in the morning, smiling and refreshed. Bright, warm sunlight streams into the bedroom. They stretch, looking energized. The sleep device is visible on the nightstand in the background.",
+    "seed_used": -1,
+    "width": 1280,
+    "height": 704,
+    "frame_count": 49,
+    "generation_time": 98.5022325515747
+  }
+]

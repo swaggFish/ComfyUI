@@ -271,9 +271,19 @@ class SequenceEngine:
                 logger.info(
                     f"🔄 Director retry #{attempt} for Shot {shot.shot_id}"
                 )
-                # Apply corrections to the shot object
-                if "seed" in current_params:
-                    shot.seed = current_params["seed"]
+                # Apply corrections to the shot object for retry
+                shot.seed = current_params.get("seed", shot.seed)
+                shot.duration_frames = current_params.get("length", shot.duration_frames)
+                if "steps" in current_params:
+                    shot.steps = current_params["steps"]
+                if "cfg" in current_params:
+                    shot.cfg = current_params["cfg"]
+                if "negative" in current_params and current_params["negative"]:
+                    shot.negative = current_params["negative"]
+                if "first_strength" in current_params:
+                    shot.first_strength = current_params["first_strength"]
+                if "last_strength" in current_params:
+                    shot.last_strength = current_params["last_strength"]
 
             result = self.generate_single_shot(
                 shot=shot,
@@ -304,6 +314,7 @@ class SequenceEngine:
                     evaluation.passed = False  # Fail the main evaluation if text fails
                     evaluation.recommended_action = text_evaluation.recommended_action
                     evaluation.summary = f"TextDirector failed: {text_evaluation.summary} | " + evaluation.summary
+                    result.metadata["text_director_evaluation"] = text_evaluation.dict()
 
             # Store evaluation in result metadata
             result.metadata["director_evaluation"] = {
@@ -325,6 +336,13 @@ class SequenceEngine:
                 return result
 
             # Should we retry?
+            if text_evaluation and not self.text_director.should_retry(text_evaluation, attempt):
+                logger.warning(
+                    f"⚠️  TextDirector: Shot {shot.shot_id} failed but "
+                    f"retry policy says stop after attempt {attempt}."
+                )
+                return result
+
             if not self.director.should_retry(evaluation, attempt):
                 logger.warning(
                     f"⚠️  Director: Shot {shot.shot_id} failed but "
@@ -336,6 +354,18 @@ class SequenceEngine:
             current_params = self.director.get_corrections(
                 evaluation, current_params, attempt
             )
+            shot.seed = current_params.get("seed", shot.seed)
+            shot.duration_frames = current_params.get("length", shot.duration_frames)
+            if "steps" in current_params:
+                shot.steps = current_params["steps"]
+            if "cfg" in current_params:
+                shot.cfg = current_params["cfg"]
+            if "negative" in current_params and current_params["negative"]:
+                shot.negative = current_params["negative"]
+            if "first_strength" in current_params:
+                shot.first_strength = current_params["first_strength"]
+            if "last_strength" in current_params:
+                shot.last_strength = current_params["last_strength"]
             logger.info(
                 f"Director corrections for retry: {evaluation.recommended_action.value}"
             )
@@ -365,6 +395,8 @@ class SequenceEngine:
         if storyboard:
             style_prompt = storyboard.style_prompt
             negative = storyboard.negative_prompt
+        if hasattr(shot, 'negative') and shot.negative:
+            negative = shot.negative
         if not negative:
             negative = build_negative_prompt(style)
 

@@ -1,0 +1,31 @@
+{
+  "hook": "I broke up with my alarm clock, and I've never been happier.",
+  "script": [
+    {
+      "shot": "SCENE START. A person's hand violently slaps a smartphone to snooze the alarm. They groan and pull the covers over their head. The room is dark and messy.",
+      "vo_caption": "(Upbeat, trending TikTok audio starts) I used to think being tired all the time was just... normal."
+    },
+    {
+      "shot": "Quick cuts: The person looking exhausted during a video call. Yawning while trying to read. Pouring a giant cup of coffee.",
+      "vo_caption": "My 'rest' was just tossing and turning. My days were fueled by caffeine and brain fog."
+    },
+    {
+      "shot": "A dramatic transition. The screen wipes to a clean, minimalist bedroom. The 'RestFlow Sleep Pod' is centered, looking sleek and futuristic. A hand gently touches its smooth surface.",
+      "vo_caption": "Then I discovered the RestFlow Sleep Pod. And it changed EVERYTHING."
+    },
+    {
+      "shot": "Close-up on the pod's interior. A person lies down and the pod's canopy slowly closes. Soft, ambient light glows from within, and animated overlays show gentle soundwaves and a temperature icon.",
+      "vo_caption": "It's not just a bed. It uses personalized soundscapes and perfect temperature control to guide you into deep, restorative sleep faster than ever."
+    },
+    {
+      "shot": "The same person from the beginning wakes up. The pod's canopy is open. They are stretching with a genuine, peaceful smile as natural sunlight fills the room. They look vibrant and refreshed.",
+      "vo_caption": "Now I wake up before my alarm, feeling fully charged and ready for the day. No grogginess, just pure energy."
+    },
+    {
+      "shot": "Final shot of the person smiling directly at the camera, holding a morning cup of tea instead of coffee, looking genuinely happy. The RestFlow Sleep Pod is visible and pristine in the background.",
+      "vo_caption": "It\u2019s time to unlock your best rest."
+    }
+  ],
+  "cta": "Tired of being tired? Tap the link in bio to discover the RestFlow Sleep Pod and get 100 nights risk-free!",
+  "tone": "Relatable, aspirational, tech-savvy, and calming"
+}
