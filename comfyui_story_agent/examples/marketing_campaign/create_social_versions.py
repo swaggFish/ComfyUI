@@ -182,18 +182,10 @@ def generate_cta_card(filename, width, height):
     img.save(filename)
 
 def main():
-    print("Generating overlays and cards...")
-    tiktok_overlay = OUTPUT_DIR / "tiktok_overlay.png"
-    reels_overlay = OUTPUT_DIR / "reels_overlay.png"
-    shorts_overlay = OUTPUT_DIR / "shorts_overlay.png"
-    fb_overlay = OUTPUT_DIR / "fb_overlay.png"
+    print("Generating CTA cards...")
     cta_landscape_png = OUTPUT_DIR / "cta_landscape.png"
     cta_square_png = OUTPUT_DIR / "cta_square.png"
 
-    generate_vertical_overlay(str(tiktok_overlay), "tiktok", "#sleepbetter #tech #biohacking")
-    generate_vertical_overlay(str(reels_overlay), "reels", "#reels #wellness #recovery")
-    generate_shorts_overlay(str(shorts_overlay))
-    generate_vertical_overlay(str(fb_overlay), "fb", "#health #sleep #productivity")
     generate_cta_card(str(cta_landscape_png), 1280, 704)
     generate_cta_card(str(cta_square_png), 1080, 1080)
 
@@ -234,13 +226,11 @@ def main():
         print("  Compiling TikTok version...")
         tiktok_out = OUTPUT_DIR / f"tiktok_{gender}.mp4"
         subprocess.run([
-            "ffmpeg", "-y", "-i", str(input_video), "-i", str(tiktok_overlay),
+            "ffmpeg", "-y", "-i", str(input_video),
             "-filter_complex",
             "[0:v]scale=720:1280:force_original_aspect_ratio=increase,crop=720:1280,gblur=sigma=30[bg];"
             "[0:v]scale=720:-1[fg];"
-            "[bg][fg]overlay=0:(1280-h)/2[overlayed_v];"
-            "[overlayed_v]drawtext=fontfile=" + FONT_PATH + ":text='Sleep smarter, not harder.':fontcolor=white:fontsize=36:x=(w-text_w)/2:y=180:box=1:boxcolor=black@0.4:boxborderw=10[v_text];"
-            "[v_text][1:v]overlay=0:0[final_v]",
+            "[bg][fg]overlay=0:(1280-h)/2[final_v]",
             "-map", "[final_v]", "-map", "0:a",
             "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac",
             str(tiktok_out)
@@ -253,13 +243,11 @@ def main():
         print("  Compiling Instagram Reels version...")
         reels_out = OUTPUT_DIR / f"instagram_reels_{gender}.mp4"
         subprocess.run([
-            "ffmpeg", "-y", "-i", str(input_video), "-i", str(reels_overlay),
+            "ffmpeg", "-y", "-i", str(input_video),
             "-filter_complex",
             "[0:v]scale=720:1280:force_original_aspect_ratio=increase,crop=720:1280,gblur=sigma=30[bg];"
             "[0:v]scale=720:-1[fg];"
-            "[bg][fg]overlay=0:(1280-h)/2[overlayed_v];"
-            "[overlayed_v]drawtext=fontfile=" + FONT_PATH + ":text='The secret to waking up refreshed...':fontcolor=white:fontsize=34:x=(w-text_w)/2:y=180:box=1:boxcolor=black@0.4:boxborderw=10[v_text];"
-            "[v_text][1:v]overlay=0:0[final_v]",
+            "[bg][fg]overlay=0:(1280-h)/2[final_v]",
             "-map", "[final_v]", "-map", "0:a",
             "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac",
             str(reels_out)
@@ -272,13 +260,11 @@ def main():
         print("  Compiling YouTube Shorts version...")
         shorts_out = OUTPUT_DIR / f"youtube_shorts_{gender}.mp4"
         subprocess.run([
-            "ffmpeg", "-y", "-i", str(input_video), "-i", str(shorts_overlay),
+            "ffmpeg", "-y", "-i", str(input_video),
             "-filter_complex",
             "[0:v]scale=720:1280:force_original_aspect_ratio=increase,crop=720:1280,gblur=sigma=30[bg];"
             "[0:v]scale=720:-1[fg];"
-            "[bg][fg]overlay=0:(1280-h)/2[overlayed_v];"
-            "[overlayed_v]drawtext=fontfile=" + FONT_PATH + ":text='Is this the ultimate bed?':fontcolor=white:fontsize=36:x=(w-text_w)/2:y=180:box=1:boxcolor=black@0.4:boxborderw=10[v_text];"
-            "[v_text][1:v]overlay=0:0[final_v]",
+            "[bg][fg]overlay=0:(1280-h)/2[final_v]",
             "-map", "[final_v]", "-map", "0:a",
             "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac",
             str(shorts_out)
@@ -291,13 +277,11 @@ def main():
         print("  Compiling Facebook Reels version...")
         fb_out = OUTPUT_DIR / f"facebook_reels_{gender}.mp4"
         subprocess.run([
-            "ffmpeg", "-y", "-i", str(input_video), "-i", str(fb_overlay),
+            "ffmpeg", "-y", "-i", str(input_video),
             "-filter_complex",
             "[0:v]scale=720:1280:force_original_aspect_ratio=increase,crop=720:1280,gblur=sigma=30[bg];"
             "[0:v]scale=720:-1[fg];"
-            "[bg][fg]overlay=0:(1280-h)/2[overlayed_v];"
-            "[overlayed_v]drawtext=fontfile=" + FONT_PATH + ":text='Eight Sleep Pod: A sleep game changer':fontcolor=white:fontsize=32:x=(w-text_w)/2:y=180:box=1:boxcolor=black@0.4:boxborderw=10[v_text];"
-            "[v_text][1:v]overlay=0:0[final_v]",
+            "[bg][fg]overlay=0:(1280-h)/2[final_v]",
             "-map", "[final_v]", "-map", "0:a",
             "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac",
             str(fb_out)
@@ -316,9 +300,7 @@ def main():
             "-filter_complex",
             "[0:v]scale=1080:1080:force_original_aspect_ratio=increase,crop=1080:1080,gblur=sigma=30[bg];"
             "[0:v]scale=1080:-1[fg];"
-            "[bg][fg]overlay=0:(1080-h)/2[overlayed_v];"
-            "[overlayed_v]drawtext=fontfile=" + FONT_PATH + ":text='WAKE UP REBORN':fontcolor=white:fontsize=42:x=(w-text_w)/2:y=100:box=1:boxcolor=black@0.4:boxborderw=10[v_text];"
-            "[v_text]drawtext=fontfile=" + FONT_PATH + ":text='Customize sleep temp from your phone.':fontcolor=white:fontsize=32:x=(w-text_w)/2:y=900:box=1:boxcolor=black@0.4:boxborderw=10[final_v]",
+            "[bg][fg]overlay=0:(1080-h)/2[final_v]",
             "-map", "[final_v]", "-map", "0:a",
             "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac",
             str(base_square_mp4)
@@ -351,12 +333,9 @@ def main():
         print("  Compiling LinkedIn version...")
         base_linkedin_mp4 = OUTPUT_DIR / f"base_linkedin_{gender}.mp4"
         
-        # Add clean branding text to 16:9 base
+        # Keep clean 16:9 base without text
         subprocess.run([
             "ffmpeg", "-y", "-i", str(input_video),
-            "-filter_complex",
-            "[0:v]drawtext=fontfile=" + FONT_PATH + ":text='Better Sleep = Peak Performance':fontcolor=white:fontsize=36:x=(w-text_w)/2:y=40:box=1:boxcolor=black@0.5:boxborderw=8[final_v]",
-            "-map", "[final_v]", "-map", "0:a",
             "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac",
             str(base_linkedin_mp4)
         ], check=True, capture_output=True)
